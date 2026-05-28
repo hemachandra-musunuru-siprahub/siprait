@@ -88,9 +88,13 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact</h3>
             <div className="space-y-4">
-              <div className="flex items-center space-x-3">
-                <Mail className="h-4 w-4 text-white/60" />
-                <span className="text-white/80 text-sm">contact@siprahub.com</span>
+              <div className="flex items-start space-x-3">
+                <MapPin className="h-4 w-4 text-white/60 mt-1 flex-shrink-0" />
+                <span className="text-white/80 text-sm">
+                  SipraHub Inc<br />
+                  16192 COASTAL HWY, LEWES,<br />
+                  Delaware 19958
+                </span>
               </div>
               <div className="flex items-start space-x-3">
                 <MapPin className="h-4 w-4 text-white/60 mt-1 flex-shrink-0" />
@@ -100,8 +104,12 @@ const Footer = () => {
                   Thanisandra Main Road, Bengaluru, 560064
                 </span>
               </div>
+              <div className="flex items-center space-x-3">
+                <Mail className="h-4 w-4 text-white/60" />
+                <span className="text-white/80 text-sm">contact@siprahub.com</span>
+              </div>
             </div>
-            <Button variant="glass" size="lg" className="mt-6 w-full text-lg font-semibold px-6 py-3 border border-white/30 shadow-lg" asChild>
+            <Button variant="default" size="lg" className="mt-6 w-full text-lg font-semibold px-6 py-3 border border-white/30 shadow-lg" asChild>
               <Link to="/contact">Get Free Consultation</Link>
             </Button>
           </div>
