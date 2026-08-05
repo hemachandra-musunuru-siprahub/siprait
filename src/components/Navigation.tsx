@@ -56,7 +56,7 @@ const Navigation = () => {
                 <a href="https://ai.siprahub.com" className="w-full">
                   AI Services
                 </a>
-              </DropdownMenuItem
+              </DropdownMenuItem>
                 
                 {/* Other services */}
               {services.filter(service => service.name !== "Software Development").map(service => <DropdownMenuItem key={service.href} asChild>
