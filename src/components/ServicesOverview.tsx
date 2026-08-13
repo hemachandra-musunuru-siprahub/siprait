@@ -44,7 +44,7 @@ const ServicesOverview = () => {
                 <Button variant="outline" size="sm" asChild className="w-fit mt-4">
                   <Link to={service.link}>
                     Learn More
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                    <ArrowRight className="ml-2 h-4 w-4 text-[#888888] group-hover:text-primary transition-colors duration-300" />
                   </Link>
                 </Button>
               </CardContent>

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Mail, Linkedin, Twitter, Github, MapPin } from "lucide-react";
+import { Mail, Linkedin, Twitter, Github, MapPin, ArrowRight } from "lucide-react";
 import logo from "@/assets/siprahub-logo.png";
 
 const Footer = () => {
@@ -20,7 +20,7 @@ const Footer = () => {
 
   return (
     <footer className="text-white bg-primary">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-1">
@@ -89,33 +89,40 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Contact</h3>
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
-                <MapPin className="h-4 w-4 text-white/60 mt-1 flex-shrink-0" />
-                <span className="text-white/80 text-sm">
+                <MapPin className="h-5 w-5 text-white/60 mt-0.5 flex-shrink-0" />
+                <div className="text-white/80 text-sm leading-relaxed">
+                  <strong className="text-white font-semibold block mb-1">US Office</strong>
                   SipraHub Inc<br />
-                  16192 COASTAL HWY, LEWES,<br />
-                  Delaware 19958
-                </span>
+                  16192 Coastal Highway<br />
+                  Lewes, Delaware 19958
+                </div>
               </div>
+              <div className="border-t border-white/10 my-2" />
               <div className="flex items-start space-x-3">
-                <MapPin className="h-4 w-4 text-white/60 mt-1 flex-shrink-0" />
-                <span className="text-white/80 text-sm">
-                  SipraHub<br />
-                  8th Floor, Tower 3B, BCIT, Bhartiya City,<br />
-                  Thanisandra Main Road, Bengaluru, 560064
-                </span>
+                <MapPin className="h-5 w-5 text-white/60 mt-0.5 flex-shrink-0" />
+                <div className="text-white/80 text-sm leading-relaxed">
+                  <strong className="text-white font-semibold block mb-1">India Office</strong>
+                  8th Floor, Tower 3B, BCIT<br />
+                  Bharatiya City, Thanisandra Main Road<br />
+                  Bengaluru – 560064
+                </div>
               </div>
+              <div className="border-t border-white/10 my-2" />
               <div className="flex items-center space-x-3">
                 <Mail className="h-4 w-4 text-white/60" />
                 <span className="text-white/80 text-sm">contact@siprahub.com</span>
               </div>
             </div>
-            <Button variant="default" size="lg" className="mt-6 w-full text-lg font-semibold px-6 py-3 border border-white/30 shadow-lg" asChild>
-              <Link to="/contact">Get Free Consultation</Link>
+            <Button variant="default" size="lg" className="mt-6 w-full text-base font-bold px-6 py-4 bg-white text-[#b91c1c] hover:bg-white/90 shadow-lg border-none flex items-center justify-center gap-2" asChild>
+              <Link to="/contact" className="flex items-center justify-center gap-2">
+                Book a Free Consultation
+                <ArrowRight className="h-5 w-5 text-[#b91c1c] stroke-[2.5]" />
+              </Link>
             </Button>
           </div>
         </div>
 
-        <div className="border-t border-white/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <div className="border-t border-white/20 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-white/60 text-sm">
             © 2026 SipraHub. All rights reserved.
           </p>

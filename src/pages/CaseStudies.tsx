@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { ArrowRight, Filter, X } from "lucide-react";
+import { ArrowRight, Filter, X, Bot, Headset, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-bg.jpg";
 import { CASE_STUDIES } from "@/data/caseStudies";
@@ -194,7 +194,7 @@ const CaseStudies = () => {
           <div className="flex justify-between items-center mb-8">
             <div>
               <h2 className="text-2xl font-bold text-foreground mb-2">
-                {filteredStudies.length} Case {filteredStudies.length === 1 ? 'Study' : 'Studies'} Found
+                Showing <span className="text-primary">{filteredStudies.length}</span> Case {filteredStudies.length === 1 ? 'Study' : 'Studies'}
               </h2>
               <p className="text-muted-foreground">
                 {activeFilterCount > 0 ? 'Filtered results' : 'All case studies'}
@@ -227,10 +227,23 @@ const CaseStudies = () => {
                         </Badge>
                       </div>
 
-                      <h3 className="text-xl font-semibold text-foreground mb-2 transition-colors group-hover:text-primary">
-                        {study.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground">{study.company}</p>
+                      <div className="flex items-start gap-4 mb-2">
+                        <div className="shrink-0 p-2 bg-muted/30 rounded-lg">
+                          {study.title.includes("Clinic") ? (
+                            <Headset className="w-12 h-12 text-foreground" strokeWidth={1.2} />
+                          ) : study.title.includes("Insurance") ? (
+                            <Bot className="w-12 h-12 text-foreground" strokeWidth={1.2} />
+                          ) : (
+                            <FileText className="w-12 h-12 text-foreground" strokeWidth={1.2} />
+                          )}
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-semibold text-foreground mb-1 transition-colors group-hover:text-primary leading-tight">
+                            {study.title}
+                          </h3>
+                          <p className="text-sm text-muted-foreground">{study.company}</p>
+                        </div>
+                      </div>
 
                       <div className="space-y-3 flex-1">
                         <div>
@@ -250,10 +263,10 @@ const CaseStudies = () => {
                           )}
                         </div>
                       </div>
-                      <div className="flex items-center text-primary font-semibold text-sm gap-2">
-                        <span>Read Full Case Study</span>
-                        <ArrowRight className="h-4 w-4" />
-                      </div>
+                      <Button className="w-full mt-4 bg-primary text-white hover:bg-primary/90">
+                        Read Case Study
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
                     </CardContent>
                   </Link>
                 </Card>

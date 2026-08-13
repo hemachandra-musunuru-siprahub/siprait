@@ -62,13 +62,11 @@ const AboutUs = () => {
             backgroundRepeat: 'no-repeat'
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/80 to-accent/70"></div>
+          <div className="absolute inset-0 bg-black/60"></div>
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
-            <Badge variant="secondary" className="mb-6 bg-white/20 text-white border-white/40 font-semibold">
-              About SipraHub
-            </Badge>
+
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">
               About <span className="text-orange-300">SipraHub</span>
             </h1>
@@ -76,10 +74,10 @@ const AboutUs = () => {
               AI-Driven Digital Transformation & IT Services. We build secure, intelligent, and scalable software solutions that drive growth and operational excellence.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center mt-8">
-              <Button variant="glass" size="xl" className="text-xl font-semibold px-8 py-4 border-2 border-white/40 shadow-lg backdrop-blur-sm" asChild>
-                <Link to="/contact">
+              <Button variant="default" size="xl" className="text-xl font-bold px-8 py-4 bg-white text-[#b91c1c] hover:bg-white/90 shadow-lg border-none flex items-center gap-2" asChild>
+                <Link to="/contact" className="flex items-center">
                   Get in Touch
-                  <ArrowRight className="ml-3 h-6 w-6" />
+                  <ArrowRight className="ml-3 h-6 w-6 text-[#b91c1c] stroke-[2.5]" />
                 </Link>
               </Button>
             </div>
