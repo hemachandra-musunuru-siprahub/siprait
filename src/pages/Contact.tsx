@@ -13,7 +13,7 @@ const Contact = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative text-white py-20 overflow-hidden">
+      <section className="relative text-white py-14 overflow-hidden">
         <div
           className="absolute inset-0 z-0"
           style={{
@@ -27,14 +27,14 @@ const Contact = () => {
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
-            <Badge variant="secondary" className="mb-6 bg-white/20 text-white border-white/40 font-semibold">
+            <Badge variant="secondary" className="mb-4 bg-white/20 text-white border-white/40 font-semibold">
               Contact Us
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight text-white">
               Let's Build and{" "}
               <span className="text-orange-300">Scale Together</span>
             </h1>
-            <p className="text-xl text-white max-w-3xl mx-auto leading-relaxed mb-8 font-medium">
+            <p className="text-lg text-white max-w-3xl mx-auto leading-relaxed font-medium">
               Start your AI-driven transformation with SipraHub today! Get in touch with our experts for a free consultation.
             </p>
           </div>

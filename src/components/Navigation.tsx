@@ -32,16 +32,16 @@ const Navigation = () => {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
-          <Link to="/" className={`text-sm font-medium transition-smooth ${isActive("/") ? "text-primary" : "text-foreground hover:text-primary"}`}>
+          <Link to="/" className={`text-sm font-medium transition-smooth pb-1 border-b-2 ${isActive("/") ? "text-primary border-primary" : "text-foreground hover:text-primary border-transparent"}`}>
             Home
           </Link>
-          <Link to="/about" className={`text-sm font-medium transition-smooth ${isActive("/about") ? "text-primary" : "text-foreground hover:text-primary"}`}>
+          <Link to="/about" className={`text-sm font-medium transition-smooth pb-1 border-b-2 ${isActive("/about") ? "text-primary border-primary" : "text-foreground hover:text-primary border-transparent"}`}>
             About Us
           </Link>
 
           {/* Services Dropdown */}
           <DropdownMenu>
-            <DropdownMenuTrigger className={`flex items-center gap-1 text-sm font-medium transition-smooth ${isServicesActive ? "text-primary" : "text-foreground hover:text-primary"}`}>
+            <DropdownMenuTrigger className={`flex items-center gap-1 text-sm font-medium transition-smooth pb-1 border-b-2 ${isServicesActive ? "text-primary border-primary" : "text-foreground hover:text-primary border-transparent"}`}>
               Services <ChevronDown className="h-4 w-4" />
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56">
@@ -67,13 +67,13 @@ const Navigation = () => {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <Link to="/case-studies" className={`text-sm font-medium transition-smooth ${isActive("/case-studies") ? "text-primary" : "text-foreground hover:text-primary"}`}>
+          <Link to="/case-studies" className={`text-sm font-medium transition-smooth pb-1 border-b-2 ${isActive("/case-studies") ? "text-primary border-primary" : "text-foreground hover:text-primary border-transparent"}`}>
             Case Studies
           </Link>
-          <Link to="/careers" className={`text-sm font-medium transition-smooth ${isActive("/careers") ? "text-primary" : "text-foreground hover:text-primary"}`}>
+          <Link to="/careers" className={`text-sm font-medium transition-smooth pb-1 border-b-2 ${isActive("/careers") ? "text-primary border-primary" : "text-foreground hover:text-primary border-transparent"}`}>
             Careers
           </Link>
-          <Link to="/contact" className={`text-sm font-medium transition-smooth ${isActive("/contact") ? "text-primary" : "text-foreground hover:text-primary"}`}>
+          <Link to="/contact" className={`text-sm font-medium transition-smooth pb-1 border-b-2 ${isActive("/contact") ? "text-primary border-primary" : "text-foreground hover:text-primary border-transparent"}`}>
             Contact
           </Link>
 
