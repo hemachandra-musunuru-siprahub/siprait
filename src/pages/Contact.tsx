@@ -6,10 +6,16 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-bg.jpg";
+import SEO from "@/components/SEO";
 
 const Contact = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        title="Contact SipraHub | Talk to Our Team"
+        description="Contact SipraHub to discuss your technology, digital transformation or AI requirements with our team."
+        canonical="https://siprahub.com/contact"
+      />
       <Navigation />
 
       {/* Hero Section */}
