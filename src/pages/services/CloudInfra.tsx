@@ -23,6 +23,7 @@ import {
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-bg.jpg";
 import cloudImage from "@/assets/hero-bg.jpg";
+import SEO from "@/components/SEO";
 
 const CloudInfra = () => {
   const capabilities = [
@@ -132,6 +133,11 @@ const CloudInfra = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        title="Cloud &amp; Infrastructure Services | SipraHub"
+        description="Build secure, scalable cloud and infrastructure foundations with SipraHub services for modern business environments."
+        canonical="https://siprahub.com/services/cloud-infra"
+      />
       <Navigation />
 
       {/* Hero Section */}

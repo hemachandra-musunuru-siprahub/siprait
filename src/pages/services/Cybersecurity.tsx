@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import cybersecurityImage from "@/assets/cybersecurity-hero.jpg";
+import SEO from "@/components/SEO";
 
 const Cybersecurity = () => {
   const capabilities = [
@@ -126,6 +127,11 @@ const Cybersecurity = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        title="Cybersecurity Services | SipraHub"
+        description="Strengthen your business with SipraHub cybersecurity services designed to improve security, resilience and risk management."
+        canonical="https://siprahub.com/services/cybersecurity"
+      />
       <Navigation />
       
       {/* Hero Section */}

@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-bg.jpg";
+import SEO from "@/components/SEO";
 
 const Careers = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -137,6 +138,11 @@ const Careers = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        title="Careers at SipraHub | Join Our Team"
+        description="Explore career opportunities at SipraHub and work with a team building modern technology, digital and AI solutions."
+        canonical="https://siprahub.com/careers"
+      />
       <Navigation />
       
       {/* Hero Section */}

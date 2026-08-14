@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import heroImage from "@/assets/hero-bg.jpg";
+import SEO from "@/components/SEO";
 
 const SoftwareDeliveryModels = () => {
   const highlights = [
@@ -100,6 +101,11 @@ const SoftwareDeliveryModels = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        title="Software Delivery Models | SipraHub"
+        description="Explore flexible software delivery models from SipraHub for building, scaling and supporting technology initiatives."
+        canonical="https://siprahub.com/services/software-delivery-models"
+      />
       <Navigation />
       
       {/* Hero Section */}

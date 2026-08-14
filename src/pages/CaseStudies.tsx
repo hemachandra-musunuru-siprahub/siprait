@@ -9,6 +9,7 @@ import { ArrowRight, Filter, X, Bot, Headset, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-bg.jpg";
 import { CASE_STUDIES } from "@/data/caseStudies";
+import SEO from "@/components/SEO";
 
 const CaseStudies = () => {
   const [selectedFilters, setSelectedFilters] = useState<{
@@ -55,6 +56,11 @@ const CaseStudies = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        title="Case Studies | SipraHub"
+        description="Explore SipraHub case studies and see how our teams solve business and technology challenges through practical digital and AI solutions."
+        canonical="https://siprahub.com/case-studies"
+      />
       <Navigation />
 
       {/* Hero Section */}
