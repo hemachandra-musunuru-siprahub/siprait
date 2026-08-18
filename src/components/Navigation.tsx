@@ -104,7 +104,7 @@ const Navigation = () => {
             Software Development
           </Link>
 
-          <a href="https://aiquire.siprahub.com" className="block pl-4 text-sm text-foreground hover:text-primary transition-smooth" onClick={() => setIsOpen(false)}>
+          <a href="https://ai.siprahub.com" className="block pl-4 text-sm text-foreground hover:text-primary transition-smooth" onClick={() => setIsOpen(false)}>
             AI Services
           </a>
 
