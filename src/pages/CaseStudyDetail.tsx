@@ -1,10 +1,11 @@
-﻿import Navigation from "@/components/Navigation";
+import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { getCaseStudyById, type CaseStudyMetric, type CaseStudyImage } from "@/data/caseStudies";
+import SEO from "@/components/SEO";
 
 const CaseStudyDetail = () => {
   const { id } = useParams();
@@ -13,12 +14,17 @@ const CaseStudyDetail = () => {
   if (!study) {
     return (
       <div className="min-h-screen bg-background">
+        <SEO 
+          title="Case Study Not Found | SipraHub"
+          description="The requested case study could not be found."
+          canonical="https://siprahub.com/case-studies"
+        />
         <Navigation />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
           <h1 className="text-2xl font-bold text-foreground mb-4">Case Study Not Found</h1>
           <p className="text-muted-foreground mb-8">The case study you're looking for doesn't exist.</p>
           <Button asChild>
-            <Link to="/case-studies">Back to Case Studies</Link>
+            <a href="https://ai.siprahub.com/our-work">Back to Our Work</a>
           </Button>
         </div>
         <Footer />
@@ -28,6 +34,11 @@ const CaseStudyDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        title={`${study.title} | SipraHub Case Study`}
+        description={`${study.title} - ${study.outcome}`}
+        canonical={`https://siprahub.com/case-studies/${study.id}`}
+      />
       <Navigation />
 
       {/* Hero Section */}
@@ -40,10 +51,10 @@ const CaseStudyDetail = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
             <Button variant="outline" className="border-white text-white bg-white/10 hover:bg-white hover:text-primary" asChild>
-              <Link to="/case-studies" className="flex items-center">
+              <a href="https://ai.siprahub.com/our-work" className="flex items-center">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Back to Case Studies
-              </Link>
+                Back to Our Work
+              </a>
             </Button>
           </div>
 
@@ -122,6 +133,19 @@ const CaseStudyDetail = () => {
             SipraHub helps {study.company} achieve their goals without sacrificing performance
           </p>
           <p className="text-lg text-muted-foreground leading-relaxed mb-6">{study.solution}</p>
+          {study.serviceLink && study.serviceName && (
+            <div className="mb-6 p-4 rounded-lg bg-gradient-card border border-primary/10 shadow-card flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <span className="text-sm text-muted-foreground">
+                Explore our specialized capabilities in this domain:
+              </span>
+              <Button variant="outline" size="sm" asChild>
+                <Link to={study.serviceLink} className="text-primary font-medium">
+                  {study.serviceName}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+          )}
           {study.solutionQuote && (
             <div className="bg-gradient-subtle rounded-lg p-6 border-l-4 border-primary mt-8">
               <p className="text-lg italic text-foreground mb-4">"{study.solutionQuote}"</p>

@@ -1,239 +1,251 @@
 import { useEffect, useState, useRef } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { Badge } from "@/components/ui/badge";
-import { Link } from "react-router-dom";
-import { FileText, ArrowLeft, ExternalLink } from "lucide-react";
-import heroImage from "@/assets/about-hero.jpg";
+import { FileText, Mail, CheckCircle2 } from "lucide-react";
+import aboutHero from "@/assets/about-hero.jpg";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 export interface LegalSection {
-    id: string;
-    title: string;
-    content: React.ReactNode;
+  id: string;
+  title: string;
+  content: React.ReactNode;
 }
 
 export interface LegalPageLayoutProps {
+  title?: string;
+  titleHighlight?: string;
+  subtitle?: string;
+  badgeText?: string;
+  heroImage?: string;
+  typeLabel?: string; // e.g. "Policy" or "Terms"
+  commitmentBanner?: {
     title: string;
-    titleHighlight: string;
+    description: string;
+  };
+  contactBox?: {
+    title: string;
     subtitle: string;
-    lastUpdated: string;
-    sections: LegalSection[];
-    /** Link to the other legal page (cross-reference) */
-    crossLink: { label: string; to: string };
+    email: string;
+  };
+  sections: LegalSection[];
+  seoTitle?: string;
+  seoDescription?: string;
+  canonicalUrl?: string;
 }
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
 const LegalPageLayout = ({
-    title,
-    titleHighlight,
-    subtitle,
-    lastUpdated,
-    sections,
-    crossLink,
+  title = "Privacy",
+  titleHighlight = "Policy",
+  subtitle = "How SipraHub collects, uses, shares, retains, and protects your personal information.",
+  badgeText = "Legal",
+  heroImage = aboutHero,
+  typeLabel = "Policy",
+  commitmentBanner,
+  contactBox = {
+    title: "Privacy Questions?",
+    subtitle: "Contact our designated Privacy Officer.",
+    email: "hello@siprahub.com",
+  },
+  sections,
+  seoTitle,
+  seoDescription,
+  canonicalUrl,
 }: LegalPageLayoutProps) => {
-    const [activeId, setActiveId] = useState<string>(sections[0]?.id ?? "");
-    const observerRef = useRef<IntersectionObserver | null>(null);
+  const [activeId, setActiveId] = useState<string>(sections[0]?.id ?? "");
+  const observerRef = useRef<IntersectionObserver | null>(null);
 
-    // Highlight the TOC link whose section is currently in view
-    useEffect(() => {
-        observerRef.current?.disconnect();
-        observerRef.current = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) setActiveId(entry.target.id);
-                });
-            },
-            { rootMargin: "-20% 0px -70% 0px" }
-        );
-        sections.forEach(({ id }) => {
-            const el = document.getElementById(id);
-            if (el) observerRef.current?.observe(el);
+  useEffect(() => {
+    observerRef.current?.disconnect();
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveId(entry.target.id);
+          }
         });
-        return () => observerRef.current?.disconnect();
-    }, [sections]);
-
-    const scrollTo = (id: string) => {
-        document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-    };
-
-    return (
-        <div className="min-h-screen bg-background">
-            <Navigation />
-
-            {/* ── Hero ──────────────────────────────────────────────────────────── */}
-            <section className="relative text-white py-20 overflow-hidden">
-                <div
-                    className="absolute inset-0 z-0"
-                    style={{
-                        backgroundImage: `url(${heroImage})`,
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                    }}
-                >
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/80 to-accent/70" />
-                </div>
-                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <Badge variant="secondary" className="mb-6 bg-white/20 text-white border-white/40 font-semibold">
-                        Legal
-                    </Badge>
-                    <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-                        {title} <span className="text-orange-300">{titleHighlight}</span>
-                    </h1>
-                    <p className="text-xl text-white max-w-3xl mx-auto leading-relaxed font-medium">
-                        {subtitle}
-                    </p>
-                </div>
-            </section>
-
-            {/* ── Two-column layout ─────────────────────────────────────────────── */}
-            <section className="py-16 bg-gradient-subtle">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="lg:grid lg:grid-cols-[260px,1fr] lg:gap-12 items-start">
-
-                        {/* ── Sticky Sidebar (TOC) ──────────────────────────────────── */}
-                        <aside className="hidden lg:block">
-                            <div className="sticky top-28 space-y-6">
-
-                                {/* Back link */}
-                                <Link
-                                    to="/"
-                                    className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-                                >
-                                    <ArrowLeft className="h-4 w-4" />
-                                    Back to Home
-                                </Link>
-
-                                {/* Last updated badge */}
-                                <div className="flex items-center gap-2">
-                                    <span className="inline-block px-3 py-1 rounded-full bg-green-50 border border-green-200 text-green-700 text-xs font-semibold">
-                                        ✓ Updated {lastUpdated}
-                                    </span>
-                                </div>
-
-                                {/* TOC */}
-                                <div className="bg-white rounded-2xl shadow-card p-5 border border-border">
-                                    <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4">
-                                        On this page
-                                    </p>
-                                    <nav className="space-y-1">
-                                        {sections.map((s, i) => (
-                                            <button
-                                                key={s.id}
-                                                onClick={() => scrollTo(s.id)}
-                                                className={`
-                          w-full text-left flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-all duration-200
-                          ${activeId === s.id
-                                                        ? "bg-primary/10 text-primary font-semibold"
-                                                        : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                                                    }
-                        `}
-                                            >
-                                                <span className={`
-                          text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0
-                          ${activeId === s.id
-                                                        ? "bg-primary text-white"
-                                                        : "bg-muted text-muted-foreground"
-                                                    }
-                        `}>
-                                                    {String(i + 1).padStart(2, "0")}
-                                                </span>
-                                                <span className="leading-tight">{s.title}</span>
-                                            </button>
-                                        ))}
-                                    </nav>
-                                </div>
-
-                                {/* Cross-link to other legal page */}
-                                <Link
-                                    to={crossLink.to}
-                                    className="flex items-center gap-3 p-4 rounded-2xl bg-white shadow-card border border-border hover:border-primary/40 hover:shadow-glow transition-all duration-200 group"
-                                >
-                                    <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                                        <FileText className="h-4 w-4 text-primary" />
-                                    </div>
-                                    <div>
-                                        <p className="text-xs text-muted-foreground">Also read</p>
-                                        <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
-                                            {crossLink.label}
-                                        </p>
-                                    </div>
-                                    <ExternalLink className="h-4 w-4 text-muted-foreground ml-auto shrink-0" />
-                                </Link>
-
-                            </div>
-                        </aside>
-
-                        {/* ── Article ───────────────────────────────────────────────── */}
-                        <article className="space-y-6">
-
-                            {/* Mobile: last updated + back */}
-                            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 lg:hidden mb-6">
-                                <Link
-                                    to="/"
-                                    className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-                                >
-                                    <ArrowLeft className="h-4 w-4" />
-                                    Back to Home
-                                </Link>
-                                <span className="inline-block px-3 py-1 rounded-full bg-green-50 border border-green-200 text-green-700 text-xs font-semibold self-start sm:self-auto">
-                                    ✓ Updated {lastUpdated}
-                                </span>
-                            </div>
-
-                            {/* Sections */}
-                            {sections.map((section, index) => (
-                                <div
-                                    key={section.id}
-                                    id={section.id}
-                                    className="bg-white rounded-2xl shadow-card border-l-4 border-primary/25 overflow-hidden scroll-mt-32 transition-all duration-200 hover:border-primary/60 hover:shadow-card"
-                                >
-                                    <div className="p-8">
-                                        {/* Section header */}
-                                        <div className="flex items-start gap-4 mb-5">
-                                            <span className="shrink-0 w-10 h-10 rounded-xl bg-primary/10 text-primary text-sm font-bold flex items-center justify-center">
-                                                {String(index + 1).padStart(2, "0")}
-                                            </span>
-                                            <h2 className="text-xl font-bold text-foreground leading-snug pt-1.5">
-                                                {section.title}
-                                            </h2>
-                                        </div>
-
-                                        {/* Section body */}
-                                        <div className="pl-14 text-muted-foreground leading-relaxed text-[15px]">
-                                            {section.content}
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-
-                            {/* Mobile cross-link */}
-                            <Link
-                                to={crossLink.to}
-                                className="lg:hidden flex items-center gap-3 p-4 rounded-2xl bg-white shadow-card border border-border hover:border-primary/40 transition-all duration-200 group"
-                            >
-                                <div className="p-2 rounded-lg bg-primary/10">
-                                    <FileText className="h-4 w-4 text-primary" />
-                                </div>
-                                <div>
-                                    <p className="text-xs text-muted-foreground">Also read</p>
-                                    <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
-                                        {crossLink.label}
-                                    </p>
-                                </div>
-                                <ExternalLink className="h-4 w-4 text-muted-foreground ml-auto shrink-0" />
-                            </Link>
-
-                        </article>
-                    </div>
-                </div>
-            </section>
-
-            <Footer />
-        </div>
+      },
+      { rootMargin: "-15% 0px -70% 0px" }
     );
+
+    sections.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) observerRef.current?.observe(el);
+    });
+
+    return () => observerRef.current?.disconnect();
+  }, [sections]);
+
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      const yOffset = -100;
+      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-[#f8f9fa] flex flex-col font-sans">
+      <SEO
+        title={seoTitle || `${title} ${titleHighlight} | SipraHub`}
+        description={seoDescription || subtitle}
+        canonical={canonicalUrl}
+      />
+      <Navigation />
+
+      {/* ── Hero Section ──────────────────────────────────────────────────── */}
+      <section className="relative text-white py-16 lg:py-20 overflow-hidden">
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: `url(${heroImage})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/80 to-accent/70" />
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          {badgeText && (
+            <Badge variant="secondary" className="mb-4 bg-white/20 text-white border-white/40 font-semibold">
+              {badgeText}
+            </Badge>
+          )}
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight text-white">
+            {title} <span className="text-orange-300">{titleHighlight}</span>
+          </h1>
+          <p className="text-lg md:text-xl text-white max-w-3xl mx-auto leading-relaxed font-medium">
+            {subtitle}
+          </p>
+        </div>
+      </section>
+
+      {/* ── Main 2-Column Content Container ───────────────────────────────── */}
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          {/* ── Left Sticky Sidebar (TOC) ──────────────────────────────────── */}
+          <aside className="lg:col-span-4 sticky top-24 space-y-5">
+            {/* TOC Card */}
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+              {/* Header */}
+              <div className="flex items-center gap-3 pb-4 border-b border-slate-100">
+                <div className="w-8 h-8 rounded-lg bg-red-50 text-[#ce2124] flex items-center justify-center shrink-0">
+                  <FileText className="w-4 h-4 text-[#ce2124]" />
+                </div>
+                <div>
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-800">
+                    TABLE OF CONTENTS
+                  </h3>
+                  <p className="text-xs text-slate-400 font-medium">
+                    {sections.length} {typeLabel} Sections
+                  </p>
+                </div>
+              </div>
+
+              {/* Navigation Items */}
+              <nav className="mt-4 space-y-0.5">
+                {sections.map((section, idx) => {
+                  const isActive = activeId === section.id;
+                  return (
+                    <button
+                      key={section.id}
+                      onClick={() => scrollTo(section.id)}
+                      className={`w-full text-left px-3 py-1.5 rounded-lg text-sm transition-all duration-150 block truncate ${
+                        isActive
+                          ? "bg-red-50 text-[#ce2124] font-semibold"
+                          : "text-slate-500 hover:text-slate-900 hover:bg-slate-50 font-normal"
+                      }`}
+                    >
+                      <span>{idx + 1}. </span>
+                      <span>{section.title}</span>
+                    </button>
+                  );
+                })}
+              </nav>
+            </div>
+
+            {/* Questions / Contact Box */}
+            {contactBox && (
+              <div className="bg-white rounded-2xl p-5 border border-slate-100 shadow-sm">
+                <h4 className="text-xs font-bold text-slate-900">
+                  {contactBox.title}
+                </h4>
+                <p className="text-xs text-slate-500 mt-1 mb-2.5">
+                  {contactBox.subtitle}
+                </p>
+                <a
+                  href={`mailto:${contactBox.email}`}
+                  className="inline-flex items-center gap-2 text-xs font-semibold text-[#ce2124] hover:underline"
+                >
+                  <Mail className="w-3.5 h-3.5 text-[#ce2124]" />
+                  {contactBox.email}
+                </a>
+              </div>
+            )}
+          </aside>
+
+          {/* ── Right Column (Main Content Card) ─────────────────────────── */}
+          <article className="lg:col-span-8 bg-white rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm border border-slate-100">
+            {/* Top Commitment Banner (if provided) */}
+            {commitmentBanner && (
+              <div className="bg-[#f0fdf4] border border-[#bbf7d0] rounded-2xl p-6 mb-10 flex items-start gap-4">
+                <div className="w-9 h-9 rounded-full bg-[#dcfce7] text-[#16a34a] flex items-center justify-center shrink-0 mt-0.5">
+                  <CheckCircle2 className="w-5 h-5 text-[#16a34a]" />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-[#14532d] mb-1">
+                    {commitmentBanner.title}
+                  </h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    {commitmentBanner.description}
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* Content Sections */}
+            <div className="space-y-12">
+              {sections.map((section, idx) => (
+                <section
+                  key={section.id}
+                  id={section.id}
+                  className="scroll-mt-28"
+                >
+                  {/* Section Title with number box & red accent line */}
+                  <div className="mb-4">
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="inline-flex items-center justify-center px-2.5 py-1 rounded-md border border-red-200 bg-white text-[#ce2124] font-bold text-sm min-w-[28px] shrink-0">
+                        {idx + 1}
+                      </span>
+                      <h2 className="text-2xl font-bold text-slate-900 tracking-tight">
+                        {section.title}
+                      </h2>
+                    </div>
+                    <div className="w-10 h-0.5 bg-[#ce2124] rounded-full mt-1.5 ml-0.5" />
+                  </div>
+
+                  {/* Section Body */}
+                  <div className="text-slate-600 leading-relaxed text-[15px] sm:text-base space-y-4">
+                    {section.content}
+                  </div>
+                </section>
+              ))}
+            </div>
+          </article>
+
+        </div>
+      </main>
+
+      <Footer />
+    </div>
+  );
 };
 
 export default LegalPageLayout;

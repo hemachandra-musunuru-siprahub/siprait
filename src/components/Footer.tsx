@@ -15,7 +15,7 @@ const Footer = () => {
 
   const company = [
     { name: "About Us", href: "/about" },
-    { name: "Case Studies", href: "/case-studies" },
+    { name: "Our Work", href: "https://ai.siprahub.com/our-work" },
   ];
 
   return (
@@ -56,12 +56,21 @@ const Footer = () => {
             <ul className="space-y-3">
               {services.map((service) => (
                 <li key={service.href}>
-                  <Link
-                    to={service.href}
-                    className="text-white/80 hover:text-white transition-smooth text-sm"
-                  >
-                    {service.name}
-                  </Link>
+                  {service.href.startsWith("http") ? (
+                    <a
+                      href={service.href}
+                      className="text-white/80 hover:text-white transition-smooth text-sm"
+                    >
+                      {service.name}
+                    </a>
+                  ) : (
+                    <Link
+                      to={service.href}
+                      className="text-white/80 hover:text-white transition-smooth text-sm"
+                    >
+                      {service.name}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -73,12 +82,21 @@ const Footer = () => {
             <ul className="space-y-3">
               {company.map((item) => (
                 <li key={item.href}>
-                  <Link
-                    to={item.href}
-                    className="text-white/80 hover:text-white transition-smooth text-sm"
-                  >
-                    {item.name}
-                  </Link>
+                  {item.href.startsWith("http") ? (
+                    <a
+                      href={item.href}
+                      className="text-white/80 hover:text-white transition-smooth text-sm"
+                    >
+                      {item.name}
+                    </a>
+                  ) : (
+                    <Link
+                      to={item.href}
+                      className="text-white/80 hover:text-white transition-smooth text-sm"
+                    >
+                      {item.name}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -131,7 +149,7 @@ const Footer = () => {
               Privacy Policy
             </Link>
             <Link to="/terms" className="text-white/60 hover:text-white/80 text-sm transition-smooth">
-              Terms of Service
+              Terms & Conditions
             </Link>
           </div>
         </div>

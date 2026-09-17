@@ -57,8 +57,8 @@ const Navigation = () => {
                   AI Services
                 </a>
               </DropdownMenuItem>
-                
-                {/* Other services */}
+
+              {/* Other services */}
               {services.filter(service => service.name !== "Software Development").map(service => <DropdownMenuItem key={service.href} asChild>
                 <Link to={service.href} className="w-full">
                   {service.name}
@@ -67,9 +67,9 @@ const Navigation = () => {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <Link to="/case-studies" className={`text-sm font-medium transition-smooth pb-1 border-b-2 ${isActive("/case-studies") ? "text-primary border-primary" : "text-foreground hover:text-primary border-transparent"}`}>
-            Case Studies
-          </Link>
+          <a href="https://ai.siprahub.com/our-work" className="text-sm font-medium transition-smooth pb-1 border-b-2 text-foreground hover:text-primary border-transparent">
+            Our Work
+          </a>
           <Link to="/careers" className={`text-sm font-medium transition-smooth pb-1 border-b-2 ${isActive("/careers") ? "text-primary border-primary" : "text-foreground hover:text-primary border-transparent"}`}>
             Careers
           </Link>
@@ -114,9 +114,9 @@ const Navigation = () => {
           </Link>)}
         </div>
 
-        <Link to="/case-studies" className="block text-sm font-medium text-foreground hover:text-primary transition-smooth" onClick={() => setIsOpen(false)}>
-          Case Studies
-        </Link>
+        <a href="https://ai.siprahub.com/our-work" className="block text-sm font-medium text-foreground hover:text-primary transition-smooth" onClick={() => setIsOpen(false)}>
+          Our Work
+        </a>
         <Link to="/careers" className="block text-sm font-medium text-foreground hover:text-primary transition-smooth" onClick={() => setIsOpen(false)}>
           Careers
         </Link>

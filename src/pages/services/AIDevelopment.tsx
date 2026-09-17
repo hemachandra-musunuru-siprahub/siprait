@@ -22,13 +22,14 @@ import {
   Cpu,
   ChevronRight,
   CheckCircle,
+  Clock,
   Workflow,
   Network,
   Binary,
-  Compass,
-  LineChart,
-  Shield,
-  Cloud,
+  BookOpen,
+  MessageSquare,
+  BarChart3,
+  Boxes,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -45,128 +46,135 @@ import SEO from "@/components/SEO";
 import heroImage from "@/assets/hero-bg.jpg";
 import { CASE_STUDIES } from "@/data/caseStudies";
 
-export default function AppliedAI() {
-  // 3 Primary Child AI Service Offerings
-  const aiServiceOfferings = [
+export default function AIDevelopment() {
+  // 6 Confirmed AI Development Capabilities
+  const capabilities = [
     {
-      icon: LineChart,
-      title: "AI Advisory & Consulting",
+      icon: Target,
+      title: "Custom AI Solutions",
       description:
-        "Identify valuable AI opportunities, assess readiness and define a practical roadmap before investing in implementation.",
-      link: "/services/ai-advisory-consulting",
-      badge: "Strategy & Readiness",
-      highlights: [
-        "AI Opportunity Discovery & Process Audits",
-        "Technical & Data Readiness Assessments",
-        "Use-Case Prioritization & ROI Modeling",
-        "Phased Implementation Roadmaps",
-      ],
+        "Build AI solutions around specific business requirements instead of forcing teams into a one-size-fits-all product. We focus on practical applications that can work with your existing processes and technology environment.",
+      highlights: ["Tailored architecture", "Process-aligned models", "Domain-specific customization"],
     },
     {
       icon: Code2,
-      title: "AI Development Services",
+      title: "AI-Powered Applications",
       description:
-        "Design and build custom AI applications, intelligent features, integrations and AI-enabled workflows around specific business requirements.",
-      link: "/services/ai-development",
-      badge: "Custom Engineering",
-      highlights: [
-        "Custom AI Applications & Enterprise Tools",
-        "AI Agents, Assistants & Enterprise Search",
-        "Generative AI & Knowledge Solutions (RAG)",
-        "Predictive Machine Learning Pipelines",
-      ],
+        "Add intelligent capabilities to new or existing applications to improve how users search, interact, analyze information and complete tasks.",
+      highlights: ["Smart search & filters", "Interactive conversational UI", "Predictive application features"],
     },
     {
-      icon: Workflow,
-      title: "AI Automation Services",
+      icon: Bot,
+      title: "AI Agents and Assistants",
       description:
-        "Apply AI to repetitive, information-heavy and workflow-based processes to reduce manual effort and improve how work moves across the business.",
-      link: "/services/ai-automation",
-      badge: "Intelligent Workflows",
-      highlights: [
-        "End-to-End Business Workflow Automation",
-        "Intelligent Document Processing & Extraction",
-        "System & Application API Integrations",
-        "Human-in-the-Loop Decision Workflows",
-      ],
+        "Develop AI assistants and agent-based experiences that can support users, retrieve information and help execute defined business tasks with appropriate controls.",
+      highlights: ["Multi-step task execution", "Enterprise knowledge retrieval", "Contextual action triggers"],
+    },
+    {
+      icon: BookOpen,
+      title: "Generative AI and Knowledge Solutions",
+      description:
+        "Use generative AI and retrieval-based approaches to help teams work with internal knowledge, documents and business information more effectively.",
+      highlights: ["Retrieval-Augmented Generation (RAG)", "Document intelligence", "Semantic enterprise search"],
+    },
+    {
+      icon: Network,
+      title: "AI Integration",
+      description:
+        "Connect AI capabilities with business applications, APIs, data sources and workflows so AI becomes part of the systems your teams already use.",
+      highlights: ["REST API & webhook bridges", "Database synchronization", "Zero disruption deployment"],
+    },
+    {
+      icon: Binary,
+      title: "Machine Learning Solutions",
+      description:
+        "Develop machine learning capabilities for suitable use cases such as classification, prediction, recommendations or pattern identification, based on available data and business requirements.",
+      highlights: ["Predictive modeling", "Data classification & scoring", "Anomaly & pattern detection"],
     },
   ];
 
-  // 7 Where AI Can Create Business Value Areas
-  const businessValueAreas = [
+  // 7 What We Can Help You Build Solutions
+  const buildSolutions = [
     {
-      title: "Improve Access to Knowledge & Information",
-      description: "Surface critical enterprise data instantly with AI-powered semantic search and knowledge assistants.",
+      title: "Internal Knowledge Assistants & Search",
+      description: "Equip employees with instant, verified semantic search over internal documentation, wikis, and SOPs.",
       icon: Search,
     },
     {
-      title: "Support Employees & Customers with Intelligent Assistants",
-      description: "Deploy 24/7 contextual assistants to answer queries, guide workflows, and resolve issues faster.",
-      icon: Bot,
+      title: "Customer & Employee Support Assistants",
+      description: "Deploy 24/7 intelligent conversational agents with human-in-the-loop escalation and strict domain guardrails.",
+      icon: MessageSquare,
     },
     {
-      title: "Automate Repetitive & Information-Heavy Workflows",
-      description: "Eliminate manual handoffs and data entry across core operational and administrative tasks.",
-      icon: Workflow,
-    },
-    {
-      title: "Add AI Capabilities to Existing Software",
-      description: "Enhance proprietary digital products with smart recommendations, predictions, and auto-completion.",
+      title: "AI-Enabled Applications & Features",
+      description: "Enhance existing web and mobile software with intelligent recommendations, auto-completion, and insights.",
       icon: Code2,
     },
     {
-      title: "Improve Document & Data Processing",
-      description: "Automatically categorize, summarize, and extract structured data from complex unstructured documents.",
+      title: "Document & Information Processing Workflows",
+      description: "Automate ingestion, parsing, extraction, and synthesis of high-volume business documents and contracts.",
       icon: FileText,
     },
     {
-      title: "Support Selected Operational & Decision Workflows",
-      description: "Augment human decision-makers with real-time data synthesis, anomaly alerts, and triage suggestions.",
-      icon: LineChart,
+      title: "AI-Assisted Operational Workflows",
+      description: "Integrate intelligent triage, task prioritization, and automated anomaly detection into daily operations.",
+      icon: Workflow,
     },
     {
-      title: "Create Custom AI Solutions for Specific Requirements",
-      description: "Engineer bespoke AI algorithms designed around your exact workflows, compliance, and systems.",
-      icon: Target,
+      title: "Custom Machine Learning Features",
+      description: "Train and fine-tune supervised, unsupervised, and predictive models tailored to your proprietary datasets.",
+      icon: Binary,
+    },
+    {
+      title: "AI Integrations for Existing Platforms",
+      description: "Bridge external LLMs and internal AI microservices seamlessly into your current CRM, ERP, and databases.",
+      icon: Network,
     },
   ];
 
-  // 5-Step From Opportunity to Implementation Framework
-  const implementationFramework = [
+  // 6-Step Development Approach
+  const developmentApproach = [
     {
       step: "01",
-      name: "Understand",
-      title: "Understand the Business Need",
+      name: "Discover",
+      title: "Discover & Define Problem Scope",
       description:
-        "Start with the business challenge, users, workflow, systems and desired outcome.",
+        "Understand the business problem, users, current workflow, available data, systems and expected outcome.",
     },
     {
       step: "02",
-      name: "Prioritize",
-      title: "Identify & Prioritize Use Cases",
+      name: "Design",
+      title: "Design Architecture & User Experience",
       description:
-        "Evaluate where AI can provide practical value and which opportunities are suitable for implementation.",
+        "Define the right solution approach, user experience, integration needs and technical architecture.",
     },
     {
       step: "03",
-      name: "Define",
-      title: "Define the Approach",
+      name: "Develop",
+      title: "Build & Iterate AI Solution",
       description:
-        "Select the right delivery path, architecture, integrations and AI technologies for the approved use case.",
+        "Build and iterate on the AI solution with attention to usability, quality and alignment with the approved requirements.",
     },
     {
       step: "04",
-      name: "Build & Integrate",
-      title: "Build and Integrate",
+      name: "Integrate",
+      title: "Connect Systems & Data Sources",
       description:
-        "Develop the solution and connect it with the required applications, data and workflows.",
+        "Connect the solution with the required applications, APIs, data sources and business workflows.",
     },
     {
       step: "05",
-      name: "Deploy & Improve",
-      title: "Deploy and Improve",
+      name: "Validate & Deploy",
+      title: "Test Rigorously & Launch Safely",
       description:
-        "Validate the solution, support deployment and refine it as usage and business requirements evolve.",
+        "Test the solution against agreed requirements and prepare it for deployment in the target environment.",
+    },
+    {
+      step: "06",
+      name: "Improve",
+      title: "Monitor, Refine & Scale",
+      description:
+        "Review performance after launch and refine the solution as business needs, data and usage evolve.",
     },
   ];
 
@@ -174,55 +182,27 @@ export default function AppliedAI() {
   const whySipraHub = [
     {
       icon: Target,
-      title: "Strategy Connected to Delivery",
+      title: "Business-First AI",
       description:
-        "AI planning is connected to implementation so ideas can move toward practical solutions rather than remaining isolated experiments.",
-    },
-    {
-      icon: Lightbulb,
-      title: "Business-First Approach",
-      description:
-        "We begin with the business problem and expected value before selecting technologies.",
+        "We start with the problem and expected business value before selecting the technology.",
     },
     {
       icon: Cpu,
-      title: "AI + Engineering",
+      title: "Technology-Agnostic Approach",
       description:
-        "SipraHub combines AI capabilities with software, integration and technology delivery experience.",
+        "We focus on selecting technologies that fit the use case, environment and long-term requirements.",
     },
     {
-      icon: Network,
-      title: "Technology-Agnostic Thinking",
+      icon: Boxes,
+      title: "End-to-End Delivery",
       description:
-        "Solutions are shaped around the use case and environment rather than forcing every business into the same technology stack.",
-    },
-  ];
-
-  // Related Technology Services
-  const relatedServices = [
-    {
-      icon: Code2,
-      title: "Software Development",
-      description: "Custom cloud-native web applications, mobile platforms, and enterprise system modernization.",
-      link: "/services/software-development",
-    },
-    {
-      icon: Cloud,
-      title: "Cloud & Infrastructure",
-      description: "Scalable cloud architecture, migration, containerization, and 24/7 managed infrastructure.",
-      link: "/services/cloud-infra",
-    },
-    {
-      icon: Shield,
-      title: "Cybersecurity",
-      description: "AI-enhanced threat detection, VAPT penetration testing, and zero-trust compliance posture.",
-      link: "/services/cybersecurity",
+        "Our approach connects discovery, development, integration and deployment instead of treating AI as an isolated experiment.",
     },
     {
       icon: Zap,
-      title: "Adaptive Delivery Solutions",
-      description: "Flexible delivery models including dedicated engineering teams and Offshore Development Centers.",
-      link: "/services/software-delivery-models",
+      title: "Flexible Delivery",
+      description:
+        "SipraHub supports different delivery models based on project needs, team structure and implementation requirements.",
     },
   ];
 
@@ -235,54 +215,54 @@ export default function AppliedAI() {
   // Approved FAQs
   const faqs = [
     {
-      question: "What AI services can SipraHub provide?",
+      question: "What are AI development services?",
       answer:
-        "SipraHub’s AI offering includes custom AI development, machine learning solutions, intelligent automation, AI-enabled applications, and strategic AI consulting.",
+        "AI development services help organizations design and build custom AI-powered applications, features, assistants, models, and intelligent workflows for specific business needs.",
     },
     {
-      question: "Where should a business start with AI?",
+      question: "What types of AI solutions can be developed?",
       answer:
-        "Start with a specific business problem or opportunity, then assess the workflow, users, data, systems, risks, and desired outcome.",
+        "Solutions can include AI-enabled applications, intelligent assistants, machine learning capabilities, information processing workflows, and AI features integrated into existing products.",
     },
     {
-      question: "Can SipraHub develop custom AI solutions?",
+      question: "How does an AI development project start?",
       answer:
-        "Yes. SipraHub can design AI solutions around specific business and technical requirements.",
+        "It starts by defining the business problem, users, data, current systems, constraints, risks, and expected outcome before selecting the technical approach.",
     },
     {
-      question: "Can AI be added to an existing application?",
+      question: "Can AI be integrated into our existing software?",
       answer:
-        "Yes. Depending on the architecture, AI capabilities can be integrated into existing applications, workflows, APIs, and data systems.",
+        "Yes. AI capabilities can be integrated with existing applications, APIs, databases, and workflows where the architecture and integration options support it.",
     },
     {
-      question: "What is the difference between AI development and AI consulting?",
+      question: "Does every AI project require a model built from scratch?",
       answer:
-        "AI consulting focuses on identifying, prioritizing, and planning AI opportunities, while AI development focuses on designing and building the solution.",
+        "No. A solution may use existing models, APIs, retrieval systems, custom logic, fine-tuning, or purpose-built models depending on the requirement.",
     },
     {
-      question: "What is the difference between AI automation and custom AI development?",
+      question: "How do you determine whether AI is appropriate for a use case?",
       answer:
-        "AI automation focuses on improving repeatable workflows, while custom AI development can address broader product, application, model, or user-experience requirements.",
+        "Evaluate business value, technical feasibility, data availability, workflow fit, integration requirements, risk, and whether AI offers an advantage over simpler approaches.",
     },
     {
-      question: "Does every business need a large AI transformation program?",
+      question: "Can SipraHub build an AI prototype before full development?",
       answer:
-        "No. A focused use case with clear value can be a practical starting point before expanding AI adoption.",
+        "A prototype or proof of concept can be useful for validating feasibility, user experience, integrations, and expected value before committing to broader implementation.",
     },
     {
-      question: "How should AI use cases be prioritized?",
+      question: "How does an AI prototype move to production?",
       answer:
-        "Consider business value, feasibility, data readiness, integration complexity, user impact, risk, implementation effort, and measurable success criteria.",
+        "The path typically includes validation, solution design, integration, testing, security and governance checks, deployment, monitoring, and iterative improvement.",
     },
     {
-      question: "Can SipraHub support AI from strategy through implementation?",
+      question: "What should businesses prepare before starting AI development?",
       answer:
-        "Yes. Depending on the engagement, SipraHub can support discovery, advisory, solution design, development, integration, and implementation.",
+        "Useful inputs include the business problem, sample workflows, available data, existing systems, user needs, constraints, security requirements, and success criteria.",
     },
     {
-      question: "What should we evaluate before implementing AI?",
+      question: "How should the success of an AI solution be measured?",
       answer:
-        "Evaluate the business case, data, architecture, integrations, security, governance, human oversight, user needs, technical feasibility, and success measures.",
+        "Success should be tied to defined business and operational outcomes, along with technical quality, reliability, user adoption, risk controls, and performance against agreed criteria.",
     },
   ];
 
@@ -303,7 +283,7 @@ export default function AppliedAI() {
   const jsonLdService = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "AI Services & Solutions",
+    "name": "AI Development Services",
     "provider": {
       "@type": "Organization",
       "name": "SipraHub",
@@ -311,13 +291,13 @@ export default function AppliedAI() {
       "logo": "https://siprahub.com/siprahub-logo.png",
     },
     "description":
-      "Explore SipraHub AI services for strategy, custom AI development, intelligent automation and implementation designed around real business needs.",
-    "serviceType": "AI Services & Solutions",
+      "Build practical, scalable AI solutions with SipraHub AI development services, from custom AI applications and intelligent automation to integration and deployment.",
+    "serviceType": "Custom AI Development",
     "areaServed": ["US", "IN", "Global"],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
-      "name": "SipraHub AI Capabilities",
-      "itemListElement": aiServiceOfferings.map((service, index) => ({
+      "name": "AI Development Capabilities",
+      "itemListElement": capabilities.map((service, index) => ({
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
@@ -348,8 +328,8 @@ export default function AppliedAI() {
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "AI Services & Solutions",
-        "item": "https://siprahub.com/services/ai-services",
+        "name": "AI Development Services",
+        "item": "https://siprahub.com/services/ai-development",
       },
     ],
   };
@@ -358,9 +338,9 @@ export default function AppliedAI() {
     <div className="min-h-screen bg-background text-foreground flex flex-col selection:bg-primary/20 selection:text-primary">
       {/* SEO Metadata */}
       <SEO
-        title="AI Services & Solutions for Business | SipraHub"
-        description="Explore SipraHub AI services for strategy, custom AI development, intelligent automation and implementation designed around real business needs."
-        canonical="https://siprahub.com/services/ai-services"
+        title="AI Development Services | Custom AI Solutions | SipraHub"
+        description="Build practical, scalable AI solutions with SipraHub AI development services, from custom AI applications and intelligent automation to integration and deployment."
+        canonical="https://siprahub.com/services/ai-development"
       />
 
       {/* JSON-LD Schemas */}
@@ -401,7 +381,7 @@ export default function AppliedAI() {
                 Services
               </Link>
               <ChevronRight className="h-3.5 w-3.5 opacity-60" />
-              <span className="text-white font-medium">AI Services & Solutions</span>
+              <span className="text-white font-medium">AI Development Services</span>
             </nav>
 
             <div className="text-center max-w-4xl mx-auto">
@@ -410,18 +390,18 @@ export default function AppliedAI() {
                 className="mb-6 bg-white/15 text-white border-white/30 backdrop-blur-md px-4 py-1.5 text-sm font-medium tracking-wide shadow-sm inline-flex items-center gap-2"
               >
                 <Sparkles className="h-4 w-4 text-orange-300" />
-                Comprehensive AI Offerings & Enterprise Solutions
+                Custom AI Engineering & Intelligent Applications
               </Badge>
 
               {/* SINGLE H1 FOR SEO */}
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 leading-tight">
-                AI Services & Solutions for Business Transformation
+                AI Development Services Built Around Your Business
               </h1>
 
               <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-8 font-normal">
-                Move from AI ideas to practical implementation with services designed around your business goals,
-                workflows and technology environment. SipraHub brings together AI strategy, development, automation
-                and engineering support to help organizations apply AI where it creates real value.
+                Turn AI opportunities into practical solutions designed for your workflows, data and business goals.
+                SipraHub helps organizations design, build, integrate and scale custom AI solutions that fit into
+                real business environments.
               </p>
 
               {/* CTAs */}
@@ -442,17 +422,18 @@ export default function AppliedAI() {
                   className="w-full sm:w-auto text-base sm:text-lg font-medium px-8 py-6 border-white/40 text-white hover:bg-white/10 backdrop-blur-sm"
                   asChild
                 >
-                  <a href="#services">Explore AI Services</a>
+                  <a href="#capabilities">Explore Our AI Capabilities</a>
                 </Button>
               </div>
 
               {/* Pill Badges */}
               <div className="flex flex-wrap justify-center gap-2.5 sm:gap-3 mt-12 pt-8 border-t border-white/15">
                 {[
-                  "AI Strategy & Advisory",
-                  "Custom AI Development",
-                  "Intelligent Automation",
-                  "System Integration",
+                  "Custom AI Solutions",
+                  "AI-Powered Applications",
+                  "AI Agents & Assistants",
+                  "Generative AI & Knowledge",
+                  "AI Integration",
                   "Machine Learning Solutions",
                 ].map((tag) => (
                   <span
@@ -479,45 +460,45 @@ export default function AppliedAI() {
                 Answer-First Overview
               </div>
               <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">
-                What AI services does SipraHub provide?
+                What are AI development services?
               </h2>
               <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">
-                SipraHub helps businesses move from AI strategy to implementation through advisory, custom AI
-                development, intelligent automation and related technology services. The right engagement depends
-                on the business problem, existing systems, data and the outcome the organization wants to achieve.
+                AI development services help businesses design and build AI-powered applications, features and
+                workflows for specific business needs. SipraHub supports the journey from identifying the right
+                use case to developing, integrating and deploying AI solutions within existing systems.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8 pt-6 border-t border-primary/10">
                 <div className="flex items-start gap-3">
                   <div className="p-2 rounded-lg bg-primary/10 text-primary mt-0.5">
-                    <Compass className="h-4 w-4" />
+                    <Target className="h-4 w-4" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-foreground">Strategic Roadmapping</h3>
+                    <h3 className="text-sm font-semibold text-foreground">Purpose-Built Solutions</h3>
                     <p className="text-xs text-muted-foreground mt-0.5">
-                      Assess readiness, evaluate feasibility, and prioritize high-ROI initiatives.
+                      Tailored to your domain logic, data models, security needs, and user workflows.
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="p-2 rounded-lg bg-primary/10 text-primary mt-0.5">
-                    <Code2 className="h-4 w-4" />
+                    <Network className="h-4 w-4" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-foreground">Custom AI Engineering</h3>
+                    <h3 className="text-sm font-semibold text-foreground">System & API Integration</h3>
                     <p className="text-xs text-muted-foreground mt-0.5">
-                      Build production-grade applications, enterprise LLM agents, and ML pipelines.
+                      Embedded directly into existing enterprise apps, databases, and microservices.
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="p-2 rounded-lg bg-primary/10 text-primary mt-0.5">
-                    <Workflow className="h-4 w-4" />
+                    <Boxes className="h-4 w-4" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-foreground">Intelligent Automation</h3>
+                    <h3 className="text-sm font-semibold text-foreground">Production Scalability</h3>
                     <p className="text-xs text-muted-foreground mt-0.5">
-                      Automate repetitive document, data, and system workflows with precision.
+                      Engineered for high concurrency, low latency, robust monitoring, and governance.
                     </p>
                   </div>
                 </div>
@@ -527,98 +508,26 @@ export default function AppliedAI() {
         </section>
 
         {/* =========================================================================
-            3. EXPLORE OUR AI SERVICES (3 Child Service Pillars)
+            3. WHAT WE CAN HELP YOU BUILD (7 Core Solution Areas)
            ========================================================================= */}
-        <section id="services" className="py-20 bg-muted/30">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full inline-block mb-3">
-                Specialized Service Offerings
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                Explore Our AI Services
-              </h2>
-              <p className="text-base sm:text-lg text-muted-foreground">
-                Whether you need strategic guidance, bespoke software development, or workflow automation,
-                our dedicated service teams provide end-to-end expertise.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {aiServiceOfferings.map((service, index) => {
-                const IconComponent = service.icon;
-                return (
-                  <Card
-                    key={index}
-                    className="bg-card border-border/80 shadow-card hover:shadow-hero hover:border-primary/30 transition-all duration-300 flex flex-col justify-between group"
-                  >
-                    <CardContent className="p-8 flex flex-col h-full">
-                      <div className="flex items-center justify-between mb-6">
-                        <div className="p-3.5 rounded-xl bg-primary/10 text-primary group-hover:scale-105 group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                          <IconComponent className="h-6 w-6" />
-                        </div>
-                        <Badge variant="outline" className="text-xs font-semibold">
-                          {service.badge}
-                        </Badge>
-                      </div>
-
-                      <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
-                        {service.title}
-                      </h3>
-
-                      <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                        {service.description}
-                      </p>
-
-                      <div className="pt-4 border-t border-border/60 mb-6 flex-1">
-                        <h4 className="text-xs font-bold uppercase tracking-wider text-foreground mb-3">
-                          Key Capabilities
-                        </h4>
-                        <ul className="space-y-2">
-                          {service.highlights.map((h, i) => (
-                            <li key={i} className="flex items-center text-xs font-medium text-foreground/80">
-                              <CheckCircle className="h-3.5 w-3.5 text-primary mr-2 flex-shrink-0" />
-                              {h}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      <Button className="w-full font-semibold group-hover:bg-primary" asChild>
-                        <Link to={service.link} className="flex items-center justify-center">
-                          Explore {service.title}
-                          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                        </Link>
-                      </Button>
-                    </CardContent>
-                  </Card>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* =========================================================================
-            4. WHERE AI CAN CREATE BUSINESS VALUE (7 Value Areas)
-           ========================================================================= */}
-        <section className="py-20 bg-background">
+        <section className="py-16 sm:py-20 bg-muted/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-14">
               <span className="text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full inline-block mb-3">
-                Strategic Impact
+                Practical Deliverables
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                Where AI Can Create Business Value
+                What We Can Help You Build
               </h2>
               <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-                Applied artificial intelligence drives the highest return when focused on eliminating friction,
-                amplifying workforce capabilities, and streamlining operational bottlenecks.
+                From intelligent employee co-pilots and custom ML pipelines to automated document intelligence,
+                we engineer software that turns complex data into tangible business outcomes.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {businessValueAreas.map((val, index) => {
-                const IconComponent = val.icon;
+              {buildSolutions.map((sol, index) => {
+                const IconComponent = sol.icon;
                 return (
                   <Card
                     key={index}
@@ -629,10 +538,10 @@ export default function AppliedAI() {
                         <IconComponent className="h-5 w-5" />
                       </div>
                       <h3 className="text-base sm:text-lg font-bold text-foreground mb-2">
-                        {val.title}
+                        {sol.title}
                       </h3>
                       <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                        {val.description}
+                        {sol.description}
                       </p>
                     </CardContent>
                   </Card>
@@ -643,38 +552,92 @@ export default function AppliedAI() {
         </section>
 
         {/* =========================================================================
-            5. FROM AI OPPORTUNITY TO IMPLEMENTATION (5-Step Framework)
+            4. AI DEVELOPMENT CAPABILITIES (6 Pillars)
+           ========================================================================= */}
+        <section id="capabilities" className="py-20 bg-background">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <span className="text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full inline-block mb-3">
+                Core Engineering Capabilities
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+                AI Development Capabilities
+              </h2>
+              <p className="text-base sm:text-lg text-muted-foreground">
+                Engineered for security, accuracy, and seamless integration with the software ecosystem your
+                teams already rely on every day.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {capabilities.map((cap, index) => {
+                const IconComponent = cap.icon;
+                return (
+                  <Card
+                    key={index}
+                    className="bg-gradient-card border border-border/80 shadow-card hover:shadow-hero hover:border-primary/30 transition-all duration-300 group flex flex-col"
+                  >
+                    <CardContent className="p-8 flex-1 flex flex-col">
+                      <div className="p-3.5 rounded-xl bg-primary/10 text-primary w-fit mb-6 group-hover:scale-105 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                        <IconComponent className="h-6 w-6" />
+                      </div>
+                      <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                        {cap.title}
+                      </h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1">
+                        {cap.description}
+                      </p>
+                      <div className="pt-4 border-t border-border/60">
+                        <ul className="space-y-2">
+                          {cap.highlights.map((h, i) => (
+                            <li key={i} className="flex items-center text-xs font-medium text-foreground/80">
+                              <CheckCircle className="h-3.5 w-3.5 text-primary mr-2 flex-shrink-0" />
+                              {h}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* =========================================================================
+            5. OUR AI DEVELOPMENT APPROACH (6-Step Methodology)
            ========================================================================= */}
         <section className="py-20 bg-muted/40 border-y border-border">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <span className="text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full inline-block mb-3">
-                End-to-End Methodology
+                Disciplined Delivery
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                From AI Opportunity to Implementation
+                Our AI Development Approach
               </h2>
               <p className="text-base sm:text-lg text-muted-foreground">
-                A connected five-stage process ensuring every initiative has a de-risked roadmap, solid technical
-                foundation, and clear trajectory to production deployment.
+                From initial scoping and architectural design to full production deployment and continuous
+                refinement, our 6-step framework ensures robust and predictable delivery.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-              {implementationFramework.map((step, idx) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {developmentApproach.map((step, idx) => (
                 <Card
                   key={idx}
                   className="bg-card border-border/80 shadow-sm hover:border-primary/30 transition-all flex flex-col justify-between"
                 >
-                  <CardContent className="p-6 flex flex-col h-full">
+                  <CardContent className="p-6 sm:p-8 flex flex-col h-full">
                     <div className="flex items-center justify-between mb-4">
                       <span className="text-3xl font-extrabold text-primary">{step.step}</span>
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground bg-muted px-2 py-0.5 rounded">
+                      <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground bg-muted px-2.5 py-1 rounded">
                         {step.name}
                       </span>
                     </div>
-                    <h3 className="text-base font-bold text-foreground mb-2">{step.title}</h3>
-                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed flex-1">
+                    <h3 className="text-lg font-bold text-foreground mb-2">{step.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed flex-1">
                       {step.description}
                     </p>
                   </CardContent>
@@ -695,8 +658,8 @@ export default function AppliedAI() {
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">Why SipraHub</h2>
               <p className="text-base sm:text-lg text-muted-foreground">
-                We combine deep engineering rigor with pragmatic business strategy so AI initiatives create
-                lasting, measurable impact.
+                We combine deep technical capabilities with strategic business acumen to ensure your AI initiatives
+                deliver practical and durable returns.
               </p>
             </div>
 
@@ -721,67 +684,20 @@ export default function AppliedAI() {
         </section>
 
         {/* =========================================================================
-            7. RELATED TECHNOLOGY SERVICES (Cross-Domain Navigation)
+            7. PROOF / CASE STUDY SECTION (Verified Case Studies)
            ========================================================================= */}
         <section className="py-20 bg-muted/30 border-t border-border">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-14">
-              <span className="text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full inline-block mb-3">
-                Cross-Domain Engineering
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                Related Technology Services
-              </h2>
-              <p className="text-base sm:text-lg text-muted-foreground">
-                Comprehensive software, cloud, and security engineering capabilities to support full-lifecycle digital transformation.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {relatedServices.map((svc, index) => {
-                const IconComponent = svc.icon;
-                return (
-                  <Card
-                    key={index}
-                    className="bg-card border-border/80 shadow-sm hover:shadow-md hover:border-primary/30 transition-all flex flex-col justify-between"
-                  >
-                    <CardContent className="p-6 flex flex-col h-full">
-                      <div className="p-3 rounded-lg bg-primary/10 text-primary w-fit mb-4">
-                        <IconComponent className="h-5 w-5" />
-                      </div>
-                      <h3 className="text-lg font-bold text-foreground mb-2">{svc.title}</h3>
-                      <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-6 flex-1">
-                        {svc.description}
-                      </p>
-                      <Link
-                        to={svc.link}
-                        className="inline-flex items-center text-xs font-semibold text-primary hover:underline group mt-auto"
-                      >
-                        Learn More
-                        <ArrowRight className="ml-1.5 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
-                      </Link>
-                    </CardContent>
-                  </Card>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* =========================================================================
-            8. PROOF / CASE STUDIES SECTION (AI in Practice)
-           ========================================================================= */}
-        <section className="py-20 bg-background border-t border-border">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <span className="text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full inline-block mb-3">
                 Proven Track Record
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                AI in Practice
+                See AI in Practice
               </h2>
               <p className="text-base sm:text-lg text-muted-foreground">
-                Discover how SipraHub designs and deploys production-grade AI solutions to solve critical operational challenges.
+                Discover how SipraHub designs, builds, and deploys intelligent applications that solve real
+                operational challenges.
               </p>
             </div>
 
@@ -814,7 +730,7 @@ export default function AppliedAI() {
 
                       <div>
                         <h4 className="text-xs font-bold uppercase tracking-wider text-primary mb-1">
-                          Solution & Engineering
+                          What SipraHub Built & Implemented
                         </h4>
                         <p className="text-sm text-muted-foreground leading-relaxed">{study.solution}</p>
                       </div>
@@ -863,6 +779,67 @@ export default function AppliedAI() {
         </section>
 
         {/* =========================================================================
+            8. CONNECTED STRATEGY & AUTOMATION (Cross-Service Links)
+           ========================================================================= */}
+        <section className="py-20 bg-background border-t border-border">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-14">
+              <span className="text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full inline-block mb-3">
+                Connected Offerings
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+                From Strategy to Intelligent Automation
+              </h2>
+              <p className="text-base sm:text-lg text-muted-foreground">
+                SipraHub connects technical development with strategic readiness consulting and workflow automation.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              <Card className="bg-card border-border/80 shadow-sm hover:shadow-md hover:border-primary/30 transition-all flex flex-col justify-between">
+                <CardContent className="p-8 flex flex-col h-full">
+                  <div className="p-3 rounded-lg bg-primary/10 text-primary w-fit mb-5">
+                    <Brain className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground mb-2">AI Advisory & Consulting</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1">
+                    Assess AI readiness, prioritize high-value use cases, and define a practical roadmap before
+                    investing in technology.
+                  </p>
+                  <Link
+                    to="/services/ai-advisory-consulting"
+                    className="inline-flex items-center text-sm font-semibold text-primary hover:underline group mt-auto"
+                  >
+                    Explore AI Consulting
+                    <ArrowRight className="ml-1.5 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-card border-border/80 shadow-sm hover:shadow-md hover:border-primary/30 transition-all flex flex-col justify-between">
+                <CardContent className="p-8 flex flex-col h-full">
+                  <div className="p-3 rounded-lg bg-primary/10 text-primary w-fit mb-5">
+                    <Workflow className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground mb-2">AI Automation Services</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1">
+                    Automate repeatable business workflows, document processing pipelines, and system handoffs with
+                    intelligent controls.
+                  </p>
+                  <Link
+                    to="/services/ai-automation"
+                    className="inline-flex items-center text-sm font-semibold text-primary hover:underline group mt-auto"
+                  >
+                    Explore AI Automation
+                    <ArrowRight className="ml-1.5 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* =========================================================================
             9. FAQ / AEO CONTENT (Accordion + Structured JSON-LD)
            ========================================================================= */}
         <section className="py-20 bg-muted/30 border-t border-border">
@@ -872,10 +849,10 @@ export default function AppliedAI() {
                 Frequently Asked Questions
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                AI Services & Implementation Insights
+                AI Development Insights
               </h2>
               <p className="text-base sm:text-lg text-muted-foreground">
-                Everything you need to know about navigating AI strategy, custom development, and system integrations.
+                Answers to common questions about scoping, integration, technology selection, and delivery.
               </p>
             </div>
 
@@ -912,12 +889,12 @@ export default function AppliedAI() {
             </Badge>
 
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-              Start with the Right AI Opportunity
+              Ready to Build with AI?
             </h2>
 
             <p className="text-lg sm:text-xl text-white/90 max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
-              Whether you are exploring AI for the first time or preparing to build and scale an existing initiative,
-              SipraHub can help define the next practical step.
+              Talk to SipraHub about your business challenge, AI idea or workflow. We can help you identify a practical
+              path from concept to implementation.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

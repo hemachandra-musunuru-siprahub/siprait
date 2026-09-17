@@ -20,17 +20,17 @@ const HeroSection = () => {
   return (
     <NewHero
       title={
-        <div className="flex items-center justify-center gap-x-3 gap-y-2 whitespace-nowrap">
+        <div className="inline-flex flex-wrap sm:flex-nowrap items-center justify-center gap-x-2 sm:gap-x-3 gap-y-1 text-center w-full whitespace-normal sm:whitespace-nowrap">
           <span>Accelerate Your</span>
-          <span className="relative inline-flex justify-center items-center w-[4.5em] h-[1.2em]">
-            <AnimatePresence>
+          <span className="inline-flex justify-center items-center min-h-[1.25em] px-1 sm:px-1.5 overflow-visible">
+            <AnimatePresence mode="wait">
               <motion.span
                 key={index}
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -40 }}
-                transition={{ duration: 0.5, ease: "easeInOut" }}
-                className={`absolute ${words[index].color}`}
+                exit={{ opacity: 0, y: -18 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className={`inline-block font-bold ${words[index].color}`}
               >
                 {words[index].text}
               </motion.span>
