@@ -23,8 +23,16 @@ import {
   FileText
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import cybersecurityImage from "@/assets/cybersecurity-hero.jpg";
 import SEO from "@/components/SEO";
+import { Sparkles, HelpCircle } from "lucide-react";
 
 const Cybersecurity = () => {
   const capabilities = [
@@ -124,6 +132,71 @@ const Cybersecurity = () => {
     }
   ];
 
+  const faqs = [
+    {
+      question: "What cybersecurity services can SipraHub support?",
+      answer:
+        "SipraHub helps organizations strengthen the security of applications, infrastructure, systems, and digital operations through security-focused technology services.",
+    },
+    {
+      question: "Can cybersecurity be included in a software development project?",
+      answer:
+        "Yes. Security can be considered throughout architecture, development, testing, deployment, access management, and ongoing operations.",
+    },
+    {
+      question: "Can SipraHub support cloud security?",
+      answer:
+        "Yes. Cloud infrastructure security can include security architecture, access control, monitoring, hardening, and appropriate safeguards for cloud environments.",
+    },
+    {
+      question: "Why should security be considered early in a project?",
+      answer:
+        "Considering security early helps teams make better architecture decisions, reduce avoidable risks, and build safeguards into the solution rather than adding them later.",
+    },
+    {
+      question: "Can SipraHub review an existing environment for security gaps?",
+      answer:
+        "SipraHub can assess the technology environment and identify areas where architecture, access controls, monitoring, configuration, or technical safeguards may need improvement.",
+    },
+    {
+      question: "How does SipraHub approach cybersecurity?",
+      answer:
+        "The approach begins with understanding the systems, business requirements, risks, and environment before defining appropriate security controls and improvement measures.",
+    },
+    {
+      question: "Can security requirements be integrated with cloud migration?",
+      answer:
+        "Yes. Security planning can be incorporated into cloud architecture, migration, identity and access management, configuration, monitoring, and ongoing management.",
+    },
+    {
+      question: "Does cybersecurity apply only to large enterprises?",
+      answer:
+        "No. Organizations of different sizes can face security risks, and the appropriate controls should be based on the systems, data, exposure, and business requirements involved.",
+    },
+    {
+      question: "Can SipraHub help improve access control?",
+      answer:
+        "Access control can be reviewed as part of application, infrastructure, or cloud security work to help ensure appropriate users and systems have appropriate levels of access.",
+    },
+    {
+      question: "How can we start improving our cybersecurity posture?",
+      answer:
+        "Start by understanding critical systems, data, users, current controls, known risks, and business priorities. This provides a basis for identifying and prioritizing improvements.",
+    },
+  ];
+
+  const jsonLdFaq = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer,
+      },
+    })),
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -132,6 +205,9 @@ const Cybersecurity = () => {
         description="Strengthen your business with SipraHub cybersecurity services designed to improve security, resilience and risk management."
         canonical="https://siprahub.com/services/cybersecurity"
       />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(jsonLdFaq)}</script>
+      </Helmet>
       <Navigation />
       
       {/* Hero Section */}
@@ -152,7 +228,7 @@ const Cybersecurity = () => {
             <Badge variant="secondary" className="mb-6 bg-white/20 text-white border-white/40 font-semibold">
               Cybersecurity Services
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight text-white">
               Next-Gen Cybersecurity{" "}
               <span className="text-orange-300">with AI</span>
             </h1>
@@ -299,6 +375,39 @@ const Cybersecurity = () => {
         </div>
       </section>
 
+      {/* Frequently Asked Questions */}
+      <section className="py-20 bg-muted/30 border-t border-border">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <span className="text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full inline-block mb-3">
+              Common Questions
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-base sm:text-lg text-muted-foreground">
+              Quick answers to common questions about SipraHub's cybersecurity services and approach.
+            </p>
+          </div>
+
+          <Accordion type="single" collapsible className="w-full space-y-4">
+            {faqs.map((faq, index) => (
+              <AccordionItem
+                key={index}
+                value={`item-${index}`}
+                className="border border-border/80 rounded-xl px-6 bg-card shadow-sm hover:border-primary/30 transition-all data-[state=open]:border-primary/40 data-[state=open]:bg-card"
+              >
+                <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary text-base sm:text-lg py-5 hover:no-underline">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-sm sm:text-base text-muted-foreground leading-relaxed pb-6 pt-1">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </section>
 
       {/* Call to Action */}
       <section className="py-20" style={{ backgroundColor: '#5B5B5B' }}>

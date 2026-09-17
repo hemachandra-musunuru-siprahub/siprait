@@ -72,10 +72,10 @@ const CaseStudiesSection = () => {
 
         <div className="text-center space-y-6">
           <Button variant="default" size="lg" asChild>
-            <Link to="/case-studies">
-              View All Case Studies
+            <a href="https://ai.siprahub.com/our-work">
+              View Our Work
               <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
+            </a>
           </Button>
 
           <p className="text-lg font-semibold text-foreground">

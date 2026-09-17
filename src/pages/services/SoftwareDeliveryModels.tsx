@@ -3,6 +3,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Shield, Building2, Globe, Users, CheckCircle, Clock, Target, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import heroImage from "@/assets/hero-bg.jpg";
@@ -99,6 +106,72 @@ const SoftwareDeliveryModels = () => {
     }
   ];
 
+  const faqs = [
+    {
+      question: "What are software delivery models?",
+      answer:
+        "Software delivery models define how teams, responsibilities, project scope, collaboration, timelines, and delivery ownership are structured.",
+    },
+    {
+      question: "What delivery models does SipraHub offer?",
+      answer:
+        "SipraHub describes on-premise delivery, offshore development centers, and managed delivery as flexible delivery options.",
+    },
+    {
+      question: "What is on-premise delivery?",
+      answer:
+        "On-premise delivery places dedicated experts within the client environment to support secure and direct collaboration.",
+    },
+    {
+      question: "What is an offshore development center?",
+      answer:
+        "An offshore development center provides a dedicated or scalable remote team structure designed to support ongoing software development needs.",
+    },
+    {
+      question: "What is managed delivery?",
+      answer:
+        "Managed delivery gives the delivery partner broader end-to-end responsibility for executing the agreed project scope and managing delivery.",
+    },
+    {
+      question: "How do I choose the right delivery model?",
+      answer:
+        "The choice depends on scope, timeline, budget, security requirements, desired control, collaboration needs, and the amount of delivery ownership required.",
+    },
+    {
+      question: "Can SipraHub recommend a delivery model for our project?",
+      answer:
+        "Yes. SipraHub can assess project requirements, priorities, timelines, and technical needs to help identify an appropriate engagement approach.",
+    },
+    {
+      question: "Can the delivery model change as the project evolves?",
+      answer:
+        "The engagement approach can be reviewed as project scope, priorities, team requirements, or business needs change.",
+    },
+    {
+      question: "Are these models suitable for long-term development?",
+      answer:
+        "Yes. Depending on the requirement, delivery structures can support defined projects as well as longer-term development initiatives.",
+    },
+    {
+      question: "How does SipraHub maintain collaboration during delivery?",
+      answer:
+        "SipraHub emphasizes structured collaboration, visibility, regular communication, and alignment between technical teams and business stakeholders.",
+    },
+  ];
+
+  const jsonLdDeliveryFaq = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <SEO 
@@ -106,6 +179,9 @@ const SoftwareDeliveryModels = () => {
         description="Explore flexible software delivery models from SipraHub for building, scaling and supporting technology initiatives."
         canonical="https://siprahub.com/services/software-delivery-models"
       />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(jsonLdDeliveryFaq)}</script>
+      </Helmet>
       <Navigation />
       
       {/* Hero Section */}
@@ -126,7 +202,7 @@ const SoftwareDeliveryModels = () => {
             <Badge variant="secondary" className="mb-6 bg-white/20 text-white border-white/40 font-semibold">
               Adaptive Delivery Solutions
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight text-white">
               Adaptive Delivery Solutions{" "}
               <span className="text-orange-300">for Every Need</span>
             </h1>
@@ -235,6 +311,40 @@ const SoftwareDeliveryModels = () => {
               </Card>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Frequently Asked Questions */}
+      <section className="py-20 bg-muted/30 border-t border-border">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <span className="text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full inline-block mb-3">
+              Common Questions
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-base sm:text-lg text-muted-foreground">
+              Quick answers to common questions about SipraHub's software delivery models and engagement structures.
+            </p>
+          </div>
+
+          <Accordion type="single" collapsible className="w-full space-y-4">
+            {faqs.map((faq, index) => (
+              <AccordionItem
+                key={index}
+                value={`item-${index}`}
+                className="border border-border/80 rounded-xl px-6 bg-card shadow-sm hover:border-primary/30 transition-all data-[state=open]:border-primary/40 data-[state=open]:bg-card"
+              >
+                <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary text-base sm:text-lg py-5 hover:no-underline">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-sm sm:text-base text-muted-foreground leading-relaxed pb-6 pt-1">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </section>
 

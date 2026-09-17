@@ -21,6 +21,13 @@ import {
   Monitor
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import heroImage from "@/assets/hero-bg.jpg";
 import cloudImage from "@/assets/hero-bg.jpg";
 import SEO from "@/components/SEO";
@@ -130,14 +137,82 @@ const CloudInfra = () => {
     }
   ];
 
+  const faqs = [
+    {
+      question: "What cloud infrastructure services does SipraHub provide?",
+      answer:
+        "SipraHub provides cloud setup and migration, on-premise to cloud migration, application hosting, email hosting, Microsoft 365 services, infrastructure security, monitoring, and infrastructure management.",
+    },
+    {
+      question: "Which cloud platforms does SipraHub support?",
+      answer:
+        "SipraHub supports major platforms including AWS, Microsoft Azure, and Google Cloud Platform.",
+    },
+    {
+      question: "Can SipraHub migrate on-premise infrastructure to the cloud?",
+      answer:
+        "Yes. SipraHub supports assessment, migration planning, data and application migration, configuration, testing, and validation.",
+    },
+    {
+      question: "Can SipraHub host web and mobile applications?",
+      answer:
+        "Yes. SipraHub provides application hosting services that can include server management, secure configurations, and performance optimization.",
+    },
+    {
+      question: "Does SipraHub provide email hosting services?",
+      answer:
+        "Yes. The cloud and infrastructure offering includes email hosting options involving platforms such as Microsoft Exchange, Google Workspace, and Zoho.",
+    },
+    {
+      question: "Can SipraHub help with Microsoft 365?",
+      answer:
+        "Yes. SipraHub supports Microsoft 365 setup, configuration, management, Teams, OneDrive, SharePoint, and licensing management.",
+    },
+    {
+      question: "How does SipraHub approach cloud security?",
+      answer:
+        "Security is considered across architecture, access control, monitoring, hardening, and relevant compliance requirements.",
+    },
+    {
+      question: "Can SipraHub optimize cloud infrastructure costs?",
+      answer:
+        "Yes. Infrastructure usage and architecture can be assessed for cost optimization while considering performance, security, reliability, and scalability.",
+    },
+    {
+      question: "Does SipraHub provide ongoing infrastructure management?",
+      answer:
+        "Yes. Ongoing services can include monitoring, maintenance, performance optimization, security updates, and technical support.",
+    },
+    {
+      question: "What is SipraHub’s cloud migration process?",
+      answer:
+        "The published methodology covers assessment and planning, architecture design, migration and setup, optimization, and ongoing management.",
+    },
+  ];
+
+  const jsonLdCloudFaq = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
 
   return (
     <div className="min-h-screen bg-background">
       <SEO 
-        title="Cloud &amp; Infrastructure Services | SipraHub"
+        title="Cloud & Infrastructure Services | SipraHub"
         description="Build secure, scalable cloud and infrastructure foundations with SipraHub services for modern business environments."
         canonical="https://siprahub.com/services/cloud-infra"
       />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(jsonLdCloudFaq)}</script>
+      </Helmet>
       <Navigation />
 
       {/* Hero Section */}
@@ -158,7 +233,7 @@ const CloudInfra = () => {
             <Badge variant="secondary" className="mb-6 bg-white/20 text-white border-white/40 font-semibold">
               Cloud & Infrastructure Services
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight text-white">
               Harness the Power of{" "}
               <span className="text-orange-300">Cloud Technology</span>
             </h1>
@@ -173,9 +248,9 @@ const CloudInfra = () => {
                 </Link>
               </Button>
               <Button variant="outline-white" size="xl" asChild>
-                <Link to="/case-studies">
-                  View Case Studies
-                </Link>
+                <a href="https://ai.siprahub.com/our-work">
+                  View Our Work
+                </a>
               </Button>
             </div>
             
@@ -310,6 +385,39 @@ const CloudInfra = () => {
         </div>
       </section>
 
+      {/* Frequently Asked Questions */}
+      <section className="py-20 bg-muted/30 border-t border-border">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <span className="text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full inline-block mb-3">
+              Common Questions
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-base sm:text-lg text-muted-foreground">
+              Quick answers to common questions about SipraHub's cloud and infrastructure services.
+            </p>
+          </div>
+
+          <Accordion type="single" collapsible className="w-full space-y-4">
+            {faqs.map((faq, index) => (
+              <AccordionItem
+                key={index}
+                value={`item-${index}`}
+                className="border border-border/80 rounded-xl px-6 bg-card shadow-sm hover:border-primary/30 transition-all data-[state=open]:border-primary/40 data-[state=open]:bg-card"
+              >
+                <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary text-base sm:text-lg py-5 hover:no-underline">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-sm sm:text-base text-muted-foreground leading-relaxed pb-6 pt-1">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </section>
 
       {/* Call to Action */}
       <section className="py-20" style={{ backgroundColor: '#5B5B5B' }}>

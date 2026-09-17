@@ -67,7 +67,7 @@ const AboutUs = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
 
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight text-white">
               About <span className="text-orange-300">SipraHub</span>
             </h1>
             <p className="text-xl text-white max-w-3xl mx-auto leading-relaxed mb-8 font-medium">

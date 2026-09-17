@@ -9,21 +9,31 @@ const ServicesOverview = () => {
   return (
     <section className="py-20 bg-gradient-subtle">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
             Our Core Offerings: Comprehensive{" "}
             <span className="text-primary">AI-Powered Solutions</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Drive growth with SipraHub's tailored, AI-enhanced services designed 
+            Drive growth with SipraHub's tailored, AI-enhanced services designed
             to transform your business operations and accelerate innovation.
+          </p>
+        </div>
+
+        {/* AEO Summary Block */}
+        <div className="max-w-4xl mx-auto mb-16 p-6 sm:p-8 rounded-2xl bg-gradient-card border border-primary/10 shadow-card text-center">
+          <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-3">
+            What does SipraHub do?
+          </h3>
+          <p className="text-muted-foreground leading-relaxed text-base sm:text-lg max-w-3xl mx-auto">
+            SipraHub helps businesses transform with AI through strategy, consulting, custom software development, automation, cloud, and cybersecurity services. We help organizations move from identifying opportunities to implementing and scaling practical technology solutions.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           {homepageServices.map((service, index) => (
-            <Card 
-              key={index} 
+            <Card
+              key={index}
               className="bg-gradient-card border border-primary/10 shadow-card hover:shadow-hero hover:border-primary/20 transition-smooth group"
             >
               <CardContent className="p-8">

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -7,11 +7,21 @@ import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ArrowRight, Filter, X, Bot, Headset, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import heroImage from "@/assets/hero-bg.jpg";
 import { CASE_STUDIES } from "@/data/caseStudies";
 import SEO from "@/components/SEO";
 
 const CaseStudies = () => {
+  useEffect(() => {
+    window.location.replace("https://ai.siprahub.com/our-work");
+  }, []);
   const [selectedFilters, setSelectedFilters] = useState<{
     useCase: string;
     industry: string;
@@ -54,13 +64,82 @@ const CaseStudies = () => {
 
   const activeFilterCount = Object.values(selectedFilters).filter(v => v !== "").length;
 
+  const faqs = [
+    {
+      question: "What do SipraHub case studies show?",
+      answer:
+        "SipraHub case studies explain client challenges, solution approaches, technologies used, and reported outcomes from completed projects.",
+    },
+    {
+      question: "What industries are represented in SipraHub’s case studies?",
+      answer:
+        "The current case-study collection includes examples from healthcare, insurance, and publishing.",
+    },
+    {
+      question: "What healthcare AI example does SipraHub show?",
+      answer:
+        "SipraHub features a healthcare digital assistant for a neurology clinic designed to answer routine patient queries through voice and text with multilingual support.",
+    },
+    {
+      question: "Does SipraHub have an insurance AI case study?",
+      answer:
+        "Yes. The case-study collection includes an AI service desk co-pilot for insurance designed to support live agents.",
+    },
+    {
+      question: "Does SipraHub have a workflow automation case study?",
+      answer:
+        "Yes. SipraHub features an editorial management platform that streamlined manuscript-related operations through workflow automation and role-based access.",
+    },
+    {
+      question: "Can I filter case studies by use case or industry?",
+      answer:
+        "The Case Studies page provides filters for use case category, industry, business function, and AI technology used.",
+    },
+    {
+      question: "Why are case studies useful when selecting a technology partner?",
+      answer:
+        "They provide evidence of how the partner approached real business problems and help buyers compare relevant workflows, technical requirements, and delivery experience.",
+    },
+    {
+      question: "Can SipraHub build solutions outside the use cases shown?",
+      answer:
+        "Yes. Published case studies are examples of completed work and do not represent every possible business or technology use case.",
+    },
+    {
+      question: "Should we expect the same results as another case study?",
+      answer:
+        "No. Outcomes depend on the organization, workflow, data, users, implementation scope, and operating environment, so each project should define its own success criteria.",
+    },
+    {
+      question: "How can I discuss a similar use case with SipraHub?",
+      answer:
+        "Share the business problem, current workflow, systems, users, and desired outcome through the consultation process so the team can assess the requirement.",
+    },
+  ];
+
+  const jsonLdCaseStudiesFaq = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+
   return (
     <div className="min-h-screen bg-background">
-      <SEO 
-        title="Case Studies | SipraHub"
+      <SEO
+        title="Our Work | SipraHub"
         description="Explore SipraHub case studies and see how our teams solve business and technology challenges through practical digital and AI solutions."
         canonical="https://siprahub.com/case-studies"
       />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(jsonLdCaseStudiesFaq)}</script>
+      </Helmet>
       <Navigation />
 
       {/* Hero Section */}
@@ -79,7 +158,7 @@ const CaseStudies = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
             <Badge variant="secondary" className="mb-6 bg-white/20 text-white border-white/40 font-semibold">
-              Case Studies
+              Our Work
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">
               Real Results Across{" "}
@@ -220,65 +299,115 @@ const CaseStudies = () => {
               {filteredStudies.map((study) => (
                 <Card
                   key={study.id}
-                  className="bg-gradient-card border-0 shadow-card hover:shadow-hero transition-smooth group"
+                  className="bg-gradient-card border-0 shadow-card hover:shadow-hero transition-smooth group flex flex-col justify-between"
                 >
-                  <Link to={`/case-studies/${study.id}`} className="block h-full">
-                    <CardContent className="p-6 h-full flex flex-col gap-6">
-                      <div className="flex items-start justify-between mb-4">
-                        <Badge variant="outline" className="text-xs bg-primary/10 text-primary border-primary/20">
-                          {study.useCase}
-                        </Badge>
-                        <Badge variant="secondary" className="text-xs">
-                          {study.industry}
-                        </Badge>
-                      </div>
+                  <CardContent className="p-6 h-full flex flex-col gap-6">
+                    <div className="flex items-start justify-between mb-4">
+                      <Badge variant="outline" className="text-xs bg-primary/10 text-primary border-primary/20">
+                        {study.useCase}
+                      </Badge>
+                      <Badge variant="secondary" className="text-xs">
+                        {study.industry}
+                      </Badge>
+                    </div>
 
-                      <div className="flex items-start gap-4 mb-2">
-                        <div className="shrink-0 p-2 bg-muted/30 rounded-lg">
-                          {study.title.includes("Clinic") ? (
-                            <Headset className="w-12 h-12 text-foreground" strokeWidth={1.2} />
-                          ) : study.title.includes("Insurance") ? (
-                            <Bot className="w-12 h-12 text-foreground" strokeWidth={1.2} />
-                          ) : (
-                            <FileText className="w-12 h-12 text-foreground" strokeWidth={1.2} />
-                          )}
-                        </div>
-                        <div>
-                          <h3 className="text-xl font-semibold text-foreground mb-1 transition-colors group-hover:text-primary leading-tight">
+                    <div className="flex items-start gap-4 mb-2">
+                      <div className="shrink-0 p-2 bg-muted/30 rounded-lg">
+                        {study.title.includes("Clinic") ? (
+                          <Headset className="w-12 h-12 text-foreground" strokeWidth={1.2} />
+                        ) : study.title.includes("Insurance") ? (
+                          <Bot className="w-12 h-12 text-foreground" strokeWidth={1.2} />
+                        ) : (
+                          <FileText className="w-12 h-12 text-foreground" strokeWidth={1.2} />
+                        )}
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-semibold text-foreground mb-1 transition-colors group-hover:text-primary leading-tight">
+                          <Link to={`/case-studies/${study.id}`} className="hover:underline">
                             {study.title}
-                          </h3>
-                          <p className="text-sm text-muted-foreground">{study.company}</p>
-                        </div>
+                          </Link>
+                        </h3>
+                        <p className="text-sm text-muted-foreground">{study.company}</p>
                       </div>
+                    </div>
 
-                      <div className="space-y-3 flex-1">
-                        <div>
-                          <p className="text-xs font-semibold text-foreground mb-1">Outcome</p>
-                          <p className="text-sm text-muted-foreground">{study.outcome}</p>
-                        </div>
-                        <div className="flex gap-2 flex-wrap">
-                          {study.aiTechnologies.slice(0, 2).map((tech, idx) => (
-                            <Badge key={idx} variant="outline" className="text-xs">
-                              {tech}
-                            </Badge>
-                          ))}
-                          {study.aiTechnologies.length > 2 && (
-                            <Badge variant="outline" className="text-xs">
-                              +{study.aiTechnologies.length - 2} more
-                            </Badge>
-                          )}
-                        </div>
+                    <div className="space-y-3 flex-1">
+                      <div>
+                        <p className="text-xs font-semibold text-foreground mb-1">Outcome</p>
+                        <p className="text-sm text-muted-foreground">{study.outcome}</p>
                       </div>
-                      <Button className="w-full mt-4 bg-primary text-white hover:bg-primary/90">
+                      <div className="flex gap-2 flex-wrap">
+                        {study.aiTechnologies.slice(0, 2).map((tech, idx) => (
+                          <Badge key={idx} variant="outline" className="text-xs">
+                            {tech}
+                          </Badge>
+                        ))}
+                        {study.aiTechnologies.length > 2 && (
+                          <Badge variant="outline" className="text-xs">
+                            +{study.aiTechnologies.length - 2} more
+                          </Badge>
+                        )}
+                      </div>
+                    </div>
+
+                    {study.serviceLink && study.serviceName && (
+                      <div className="pt-3 border-t border-border/60 flex items-center justify-between text-xs text-muted-foreground">
+                        <span>Related Domain:</span>
+                        <Link
+                          to={study.serviceLink}
+                          className="font-medium text-primary hover:underline inline-flex items-center gap-1"
+                        >
+                          {study.serviceName}
+                          <ArrowRight className="h-3 w-3" />
+                        </Link>
+                      </div>
+                    )}
+
+                    <Button className="w-full mt-2 bg-primary text-white hover:bg-primary/90" asChild>
+                      <Link to={`/case-studies/${study.id}`}>
                         Read Case Study
                         <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
-                    </CardContent>
-                  </Link>
+                      </Link>
+                    </Button>
+                  </CardContent>
                 </Card>
               ))}
             </div>
           )}
+        </div>
+      </section>
+
+      {/* Frequently Asked Questions */}
+      <section className="py-20 bg-muted/30 border-t border-border">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <span className="text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full inline-block mb-3">
+              Common Questions
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-base sm:text-lg text-muted-foreground">
+              Quick answers to common questions about SipraHub's case studies, solutions, and delivered results.
+            </p>
+          </div>
+
+          <Accordion type="single" collapsible className="w-full space-y-4">
+            {faqs.map((faq, index) => (
+              <AccordionItem
+                key={index}
+                value={`item-${index}`}
+                className="border border-border/80 rounded-xl px-6 bg-card shadow-sm hover:border-primary/30 transition-all data-[state=open]:border-primary/40 data-[state=open]:bg-card"
+              >
+                <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary text-base sm:text-lg py-5 hover:no-underline">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-sm sm:text-base text-muted-foreground leading-relaxed pb-6 pt-1">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </section>
 

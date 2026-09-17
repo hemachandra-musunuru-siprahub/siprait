@@ -5,9 +5,17 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ContactSection from "@/components/ContactSection";
 import { Link } from "react-router-dom";
-import { Code, RefreshCcw, Building, CheckCircle, ArrowRight, Settings, Shield, Users } from "lucide-react";
+import { Helmet } from "react-helmet-async";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Code, RefreshCcw, Building, CheckCircle, ArrowRight, Settings, Shield, Users, Sparkles, HelpCircle } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
 import teamImage from "@/assets/team-collaboration.jpg";
+import SEO from "@/components/SEO";
 
 const SoftwareDevelopment = () => {
   const capabilities = [
@@ -102,11 +110,59 @@ const SoftwareDevelopment = () => {
     }
   ];
 
+  const faqs = [
+    {
+      question: "What types of custom software does SipraHub develop?",
+      answer:
+        "SipraHub designs and builds custom cloud-native web applications, mobile platforms, enterprise management systems, API microservices, and AI-enabled software tailored to your specific business workflows and operational goals.",
+    },
+    {
+      question: "How do you integrate AI capabilities into custom software?",
+      answer:
+        "We embed intelligent features such as conversational assistants, predictive analytics, automated document parsing, semantic search, and machine learning models directly into your application architecture and user interfaces.",
+    },
+    {
+      question: "Can you modernize our existing legacy applications?",
+      answer:
+        "Yes. We revitalize legacy systems through cloud migration, microservices re-architecting, database optimization, API modernization, and AI integration to improve performance, security, and scalability without operational disruption.",
+    },
+    {
+      question: "What software development methodologies do you follow?",
+      answer:
+        "We support Agile (Scrum/Kanban), Waterfall, Test-Driven Development (TDD), and custom hybrid delivery models, aligning our methodology with your project complexity, compliance requirements, and release cadence.",
+    },
+    {
+      question: "How do we get started with a software development project?",
+      answer:
+        "Engagements begin with a discovery consultation to evaluate your business goals, technical requirements, user workflows, and timelines. From there, we define a clear scope, system architecture, milestones, and resource plan.",
+    },
+  ];
+
+  const jsonLdFaq = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer,
+      },
+    })),
+  };
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        title="Software Development | SipraHub"
+        description="Explore flexible software delivery models from SipraHub for building, scaling and supporting technology initiatives."
+        canonical="https://siprahub.com/services/software-development"
+      />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(jsonLdFaq)}</script>
+      </Helmet>
       <Navigation />
-      
+
       {/* Hero Section */}
       <section className="relative text-white py-20 overflow-hidden">
         <div
@@ -125,7 +181,7 @@ const SoftwareDevelopment = () => {
             <Badge variant="secondary" className="mb-6 bg-white/20 text-white border-white/40 font-semibold">
               Software Development
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight text-white">
               Software Development Services{" "}
               <span className="text-orange-300">Building Your AI-Powered Vision</span>
             </h1>
@@ -140,7 +196,7 @@ const SoftwareDevelopment = () => {
                 </Link>
               </Button>
             </div>
-            
+
             <div className="flex flex-wrap justify-center gap-4 mt-12">
               {["Custom Development", "Legacy Modernization", "Cloud Migration", "AI Integration", "Security"].map((tech) => (
                 <Badge key={tech} variant="secondary" className="bg-white/10 text-white border-white/20 px-4 py-2">
@@ -235,8 +291,8 @@ const SoftwareDevelopment = () => {
               Our systematic approach ensures every project delivers exceptional results through proven methodologies and cutting-edge technology integration.
             </p>
             <div className="mb-12">
-              <a 
-                href="/contact" 
+              <a
+                href="/contact"
                 className="text-primary underline hover:text-primary/80 transition-colors text-lg font-medium"
               >
                 Experience AI-powered project success with SipraHub!
@@ -304,6 +360,39 @@ const SoftwareDevelopment = () => {
         </div>
       </section>
 
+      {/* Frequently Asked Questions */}
+      <section className="py-20 bg-muted/30 border-t border-border">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <span className="text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full inline-block mb-3">
+              Common Questions
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-base sm:text-lg text-muted-foreground">
+              Quick answers to common questions about SipraHub's custom software development services and delivery approach.
+            </p>
+          </div>
+
+          <Accordion type="single" collapsible className="w-full space-y-4">
+            {faqs.map((faq, index) => (
+              <AccordionItem
+                key={index}
+                value={`item-${index}`}
+                className="border border-border/80 rounded-xl px-6 bg-card shadow-sm hover:border-primary/30 transition-all data-[state=open]:border-primary/40 data-[state=open]:bg-card"
+              >
+                <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary text-base sm:text-lg py-5 hover:no-underline">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-sm sm:text-base text-muted-foreground leading-relaxed pb-6 pt-1">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </section>
 
       {/* Call to Action */}
       <section className="py-20" style={{ backgroundColor: '#5B5B5B' }}>

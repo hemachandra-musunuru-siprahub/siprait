@@ -46,6 +46,8 @@ export interface CaseStudy {
     testimonialRole?: string;
     testimonialCompany: string;
     images?: CaseStudyImage[];
+    serviceLink?: string;
+    serviceName?: string;
 }
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -58,6 +60,8 @@ export const CASE_STUDIES: CaseStudy[] = [
         useCase: "24/7 Patient Support",
         industry: "Healthcare",
         businessFunction: "Patient Services",
+        serviceLink: "/services/ai-services",
+        serviceName: "AI Services & Implementation",
         aiTechnologies: ["Natural Language Processing", "Voice AI", "Multilingual AI"],
         outcome: "Instant, accurate answers at any hour, in preferred language and mode",
         metrics: [
@@ -114,6 +118,8 @@ export const CASE_STUDIES: CaseStudy[] = [
         useCase: "Live Agent Augmentation",
         industry: "Insurance",
         businessFunction: "Customer Support",
+        serviceLink: "/services/ai-services",
+        serviceName: "AI Solutions & Automation",
         aiTechnologies: ["Natural Language Processing", "Sentiment Analysis", "Knowledge Management"],
         outcome: "Faster resolutions with fewer errors through real-time co-pilot support",
         metrics: [
@@ -166,6 +172,8 @@ export const CASE_STUDIES: CaseStudy[] = [
         useCase: "End-to-end Manuscript Editing Workflow",
         industry: "Publishing",
         businessFunction: "Operations",
+        serviceLink: "/services/software-development",
+        serviceName: "Custom Software Development",
         aiTechnologies: ["Workflow Automation", "Document Management", "Authentication Systems"],
         outcome: "Streamlined operations through automated assignment and role-based access",
         metrics: [

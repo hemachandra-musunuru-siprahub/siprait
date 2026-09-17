@@ -161,9 +161,9 @@ const BlogResources = () => {
                 </Link>
               </Button>
               <Button variant="outline" size="xl" className="text-xl font-semibold px-8 py-4 border-2 border-white/60 text-white hover:text-white/80 shadow-lg" asChild>
-                <Link to="/case-studies">
+                <a href="https://ai.siprahub.com/our-work">
                   Download Resources
-                </Link>
+                </a>
               </Button>
             </div>
           </div>

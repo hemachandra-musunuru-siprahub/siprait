@@ -20,6 +20,13 @@ import {
   ChevronUp
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import heroImage from "@/assets/hero-bg.jpg";
 import SEO from "@/components/SEO";
 
@@ -136,6 +143,72 @@ const Careers = () => {
     "Transparency & Open Communication"
   ];
 
+  const faqs = [
+    {
+      question: "What types of roles are available at SipraHub?",
+      answer:
+        "SipraHub career opportunities can include software development, generative AI and AI, business development, marketing, customer success, and other functions as openings become available.",
+    },
+    {
+      question: "Where can I see current SipraHub job openings?",
+      answer:
+        "Current opportunities are listed on the SipraHub Careers page under the available career categories.",
+    },
+    {
+      question: "How can I apply for a role at SipraHub?",
+      answer:
+        "Candidates can use the available application options on the Careers page or share a resume for relevant opportunities.",
+    },
+    {
+      question: "Does SipraHub offer remote work?",
+      answer:
+        "SipraHub describes remote work as one of its flexible work options, depending on role and business requirements.",
+    },
+    {
+      question: "Does SipraHub offer hybrid work?",
+      answer:
+        "Yes. Hybrid arrangements are listed among SipraHub’s flexible work options.",
+    },
+    {
+      question: "Does SipraHub offer flexible working hours?",
+      answer:
+        "Flexible hours are presented as part of SipraHub’s work culture and flexible work approach.",
+    },
+    {
+      question: "What is the work culture at SipraHub?",
+      answer:
+        "SipraHub emphasizes innovation, collaboration, continuous learning, work-life balance, diversity and inclusion, and transparent communication.",
+    },
+    {
+      question: "Are there opportunities for learning and career growth?",
+      answer:
+        "SipraHub highlights continuous learning, skill development, and career advancement as part of its employee experience.",
+    },
+    {
+      question: "What if there is no opening for my role right now?",
+      answer:
+        "Candidates can review the current openings and use the resume-sharing option where appropriate so their profile can be considered for relevant opportunities.",
+    },
+    {
+      question: "What qualities does SipraHub value in its team culture?",
+      answer:
+        "The Careers page highlights creativity, collaboration, learning, transparency, diverse perspectives, and an open work culture.",
+    },
+  ];
+
+  const jsonLdCareersFaq = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <SEO 
@@ -143,6 +216,9 @@ const Careers = () => {
         description="Explore career opportunities at SipraHub and work with a team building modern technology, digital and AI solutions."
         canonical="https://siprahub.com/careers"
       />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(jsonLdCareersFaq)}</script>
+      </Helmet>
       <Navigation />
       
       {/* Hero Section */}
@@ -391,6 +467,40 @@ const Careers = () => {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Frequently Asked Questions */}
+      <section className="py-20 bg-muted/30 border-t border-border">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <span className="text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full inline-block mb-3">
+              Common Questions
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-base sm:text-lg text-muted-foreground">
+              Quick answers to common questions about career opportunities, hiring, and work culture at SipraHub.
+            </p>
+          </div>
+
+          <Accordion type="single" collapsible className="w-full space-y-4">
+            {faqs.map((faq, index) => (
+              <AccordionItem
+                key={index}
+                value={`item-${index}`}
+                className="border border-border/80 rounded-xl px-6 bg-card shadow-sm hover:border-primary/30 transition-all data-[state=open]:border-primary/40 data-[state=open]:bg-card"
+              >
+                <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary text-base sm:text-lg py-5 hover:no-underline">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-sm sm:text-base text-muted-foreground leading-relaxed pb-6 pt-1">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </section>
 
