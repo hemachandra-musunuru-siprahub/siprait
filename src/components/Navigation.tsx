@@ -10,14 +10,21 @@ const Navigation = () => {
   const isActive = (path: string) => location.pathname === path;
   const isServicesActive = location.pathname.startsWith("/services/");
   const services = [{
-    name: "Software Development",
-    href: "/services/software-development"
+    name: "GTM",
+    href: "/services/gtm"
+  }, {
+    name: "AI Services",
+    href: "https://ai.siprahub.com",
+    external: true
   }, {
     name: "Cybersecurity",
     href: "/services/cybersecurity"
   }, {
     name: "Cloud & Infrastructure",
     href: "/services/cloud-infra"
+  }, {
+    name: "Software Development",
+    href: "/services/software-development"
   }, {
     name: "Adaptive Delivery Solutions",
     href: "/services/software-delivery-models"
@@ -45,24 +52,12 @@ const Navigation = () => {
               Services <ChevronDown className="h-4 w-4" />
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56">
-              {/* Software Development first */}
-              <DropdownMenuItem asChild>
-                <Link to="/services/software-development" className="w-full">
-                  Software Development
-                </Link>
-              </DropdownMenuItem>
-
-              <DropdownMenuItem asChild>
-                <a href="https://ai.siprahub.com" className="w-full">
-                  AI Services
-                </a>
-              </DropdownMenuItem>
-
-              {/* Other services */}
-              {services.filter(service => service.name !== "Software Development").map(service => <DropdownMenuItem key={service.href} asChild>
-                <Link to={service.href} className="w-full">
+              {services.map(service => <DropdownMenuItem key={service.href} asChild>
+                {service.external ? <a href={service.href} className="w-full">
                   {service.name}
-                </Link>
+                </a> : <Link to={service.href} className="w-full">
+                  {service.name}
+                </Link>}
               </DropdownMenuItem>)}
             </DropdownMenuContent>
           </DropdownMenu>
@@ -99,17 +94,9 @@ const Navigation = () => {
         <div className="space-y-2">
           <span className="block text-sm font-medium text-muted-foreground">Services</span>
 
-          {/* Software Development first */}
-          <Link to="/services/software-development" className="block pl-4 text-sm text-foreground hover:text-primary transition-smooth" onClick={() => setIsOpen(false)}>
-            Software Development
-          </Link>
-
-          <a href="https://ai.siprahub.com" className="block pl-4 text-sm text-foreground hover:text-primary transition-smooth" onClick={() => setIsOpen(false)}>
-            AI Services
-          </a>
-
-          {/* Other services */}
-          {services.filter(service => service.name !== "Software Development").map(service => <Link key={service.href} to={service.href} className="block pl-4 text-sm text-foreground hover:text-primary transition-smooth" onClick={() => setIsOpen(false)}>
+          {services.map(service => service.external ? <a key={service.href} href={service.href} className="block pl-4 text-sm text-foreground hover:text-primary transition-smooth" onClick={() => setIsOpen(false)}>
+            {service.name}
+          </a> : <Link key={service.href} to={service.href} className="block pl-4 text-sm text-foreground hover:text-primary transition-smooth" onClick={() => setIsOpen(false)}>
             {service.name}
           </Link>)}
         </div>

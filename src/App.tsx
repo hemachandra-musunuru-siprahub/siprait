@@ -23,6 +23,7 @@ import AIDevelopment from "./pages/services/AIDevelopment";
 import SoftwareDevelopment from "./pages/services/SoftwareDevelopment";
 import SoftwareDeliveryModels from "./pages/services/SoftwareDeliveryModels";
 import CloudInfra from "./pages/services/CloudInfra";
+import GTM from "./pages/services/GTM";
 import ServicesHub from "./pages/ServicesHub";
 import ComingSoon from "./pages/ComingSoon";
 import NotFound from "./pages/NotFound";
@@ -77,6 +78,7 @@ const App = () => (
             <Route path="/services/software-development" element={<SoftwareDevelopment />} />
             <Route path="/services/software-delivery-models" element={<SoftwareDeliveryModels />} />
             <Route path="/services/cloud-infra" element={<CloudInfra />} />
+            <Route path="/services/gtm" element={<GTM />} />
             <Route path="/coming-soon" element={<ComingSoon />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
