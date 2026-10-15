@@ -70,6 +70,9 @@ const Navigation = () => {
           <a href="https://ai.siprahub.com/our-work" className="text-sm font-medium transition-smooth pb-1 border-b-2 text-foreground hover:text-primary border-transparent">
             Our Work
           </a>
+          <a href="https://ai.siprahub.com/blog" className="text-sm font-medium transition-smooth pb-1 border-b-2 text-foreground hover:text-primary border-transparent">
+            Blogs
+          </a>
           <Link to="/careers" className={`text-sm font-medium transition-smooth pb-1 border-b-2 ${isActive("/careers") ? "text-primary border-primary" : "text-foreground hover:text-primary border-transparent"}`}>
             Careers
           </Link>
@@ -116,6 +119,9 @@ const Navigation = () => {
 
         <a href="https://ai.siprahub.com/our-work" className="block text-sm font-medium text-foreground hover:text-primary transition-smooth" onClick={() => setIsOpen(false)}>
           Our Work
+        </a>
+        <a href="https://ai.siprahub.com/blog" className="block text-sm font-medium text-foreground hover:text-primary transition-smooth" onClick={() => setIsOpen(false)}>
+          Blogs
         </a>
         <Link to="/careers" className="block text-sm font-medium text-foreground hover:text-primary transition-smooth" onClick={() => setIsOpen(false)}>
           Careers
