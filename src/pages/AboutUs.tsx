@@ -25,7 +25,6 @@ const AboutUs = () => {
     {
       name: "Prasanna Kumar",
       role: "CEO",
-      description: "With extensive experience in setting up digital businesses and running cybersecurity operations, Prasanna provides strategic leadership and a deep understanding of business execution.",
       image: prasannaHeadshot,
       linkedin: "https://www.linkedin.com/in/prasannakumarpn/"
     },
