@@ -9,10 +9,19 @@ import aboutHero from "@/assets/about-hero.jpg";
 import teamCollaboration from "@/assets/team-collaboration.jpg";
 import missionVision from "@/assets/mission-vision.jpg";
 import prasannaHeadshot from "/lovable-uploads/6e0bce80-e062-44ce-aae6-b11c691642e9.png";
-import senthilHeadshot from "/lovable-uploads/d5656f33-44b5-47fc-b32b-ae0db542c2ae.png";
+import srinivasHeadshot from "@/assets/srinivas-reddy-pasula.jpg";
+import jaicindHeadshot from "@/assets/jaicind-bhavan.png";
+
+type TeamMember = {
+  name: string;
+  role: string;
+  description?: string;
+  image: string;
+  linkedin?: string;
+};
 
 const AboutUs = () => {
-  const teamMembers = [
+  const teamMembers: TeamMember[] = [
     {
       name: "Prasanna Kumar",
       role: "CEO",
@@ -21,11 +30,14 @@ const AboutUs = () => {
       linkedin: "https://www.linkedin.com/in/prasannakumarpn/"
     },
     {
-      name: "Senthil Natarajan",
+      name: "Srinivas Reddy Pasula",
       role: "Industry Advisor",
-      description: "Senthil has worked with Fortune 500 companies worldwide, leading digital transformation initiatives and creating custom AI-powered solutions.",
-      image: senthilHeadshot,
-      linkedin: "https://www.linkedin.com/in/hisenthil/"
+      image: srinivasHeadshot
+    },
+    {
+      name: "Jaicind Bhavan",
+      role: "CTO",
+      image: jaicindHeadshot
     }
   ];
 
@@ -190,7 +202,7 @@ const AboutUs = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {teamMembers.map((member, index) => (
               <Card key={index} className="bg-white border-0 shadow-card hover:shadow-hero transition-smooth group">
                 <CardContent className="p-8 text-center">
@@ -207,18 +219,22 @@ const AboutUs = () => {
                   <p className="text-primary font-medium mb-4">
                     {member.role}
                   </p>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                    {member.description}
-                  </p>
-                  <a
-                    href={member.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-primary hover:text-primary-dark transition-colors"
-                  >
-                    <Linkedin className="h-5 w-5" />
-                    <span className="text-sm font-medium">LinkedIn</span>
-                  </a>
+                  {member.description && (
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                      {member.description}
+                    </p>
+                  )}
+                  {member.linkedin && (
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-primary hover:text-primary-dark transition-colors"
+                    >
+                      <Linkedin className="h-5 w-5" />
+                      <span className="text-sm font-medium">LinkedIn</span>
+                    </a>
+                  )}
                 </CardContent>
               </Card>
             ))}
