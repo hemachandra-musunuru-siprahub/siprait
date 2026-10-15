@@ -17,6 +17,8 @@ type TeamMember = {
   role: string;
   description?: string;
   image: string;
+  // Tailwind object-position class for photos whose face isn't centred.
+  imagePosition?: string;
   linkedin?: string;
 };
 
@@ -31,7 +33,8 @@ const AboutUs = () => {
     {
       name: "Srinivas Reddy Pasula",
       role: "Industry Advisor",
-      image: srinivasHeadshot
+      image: srinivasHeadshot,
+      imagePosition: "object-top"
     },
     {
       name: "Jaicind Bhavan",
@@ -209,7 +212,7 @@ const AboutUs = () => {
                     <img
                       src={member.image}
                       alt={`${member.name} headshot`}
-                      className="w-32 h-32 rounded-full mx-auto object-cover shadow-lg"
+                      className={`w-32 h-32 rounded-full mx-auto object-cover shadow-lg ${member.imagePosition ?? ""}`}
                     />
                   </div>
                   <h3 className="text-xl font-semibold text-foreground mb-2">
