@@ -32,14 +32,14 @@ const AboutUs = () => {
       linkedin: "https://www.linkedin.com/in/prasannakumarpn/"
     },
     {
-      name: "Sreenath Reddy",
-      role: "AVP - Operations",
-      image: sreenathHeadshot
-    },
-    {
       name: "Jaicind Bhavan",
       role: "CTO",
       image: jaicindHeadshot
+    },
+    {
+      name: "Sreenath Reddy",
+      role: "AVP - Operations",
+      image: sreenathHeadshot
     }
   ];
 
