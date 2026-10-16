@@ -76,9 +76,9 @@ const Navigation = () => {
           <Link to="/careers" className={`text-sm font-medium transition-smooth pb-1 border-b-2 ${isActive("/careers") ? "text-primary border-primary" : "text-foreground hover:text-primary border-transparent"}`}>
             Careers
           </Link>
-          <Link to="/contact" className={`text-sm font-medium transition-smooth pb-1 border-b-2 ${isActive("/contact") ? "text-primary border-primary" : "text-foreground hover:text-primary border-transparent"}`}>
+          <a href="https://ai.siprahub.com/contact" className="text-sm font-medium transition-smooth pb-1 border-b-2 text-foreground hover:text-primary border-transparent">
             Contact
-          </Link>
+          </a>
 
         </div>
 
@@ -126,9 +126,9 @@ const Navigation = () => {
         <Link to="/careers" className="block text-sm font-medium text-foreground hover:text-primary transition-smooth" onClick={() => setIsOpen(false)}>
           Careers
         </Link>
-        <Link to="/contact" className="block text-sm font-medium text-foreground hover:text-primary transition-smooth" onClick={() => setIsOpen(false)}>
+        <a href="https://ai.siprahub.com/contact" className="block text-sm font-medium text-foreground hover:text-primary transition-smooth" onClick={() => setIsOpen(false)}>
           Contact
-        </Link>
+        </a>
       </div>}
     </div>
   </nav>;

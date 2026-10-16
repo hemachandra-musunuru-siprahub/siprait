@@ -132,10 +132,10 @@ const Footer = () => {
               </div>
             </div>
             <Button variant="default" size="lg" className="mt-6 w-full text-base font-bold px-6 py-4 bg-white text-[#b91c1c] hover:bg-white/90 shadow-lg border-none flex items-center justify-center gap-2" asChild>
-              <Link to="/contact" className="flex items-center justify-center gap-2">
+              <a href="https://ai.siprahub.com/contact" className="flex items-center justify-center gap-2">
                 Book a Free Consultation
                 <ArrowRight className="h-5 w-5 text-[#b91c1c] stroke-[2.5]" />
-              </Link>
+              </a>
             </Button>
           </div>
         </div>

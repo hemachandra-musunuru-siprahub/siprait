@@ -42,6 +42,13 @@ const RedirectToOurWork = () => {
   return null;
 };
 
+const RedirectToContact = () => {
+  useEffect(() => {
+    window.location.replace("https://ai.siprahub.com/contact");
+  }, []);
+  return null;
+};
+
 const App = () => (
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>
@@ -53,7 +60,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<AboutUs />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/contact" element={<RedirectToContact />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/careers/apply" element={<ResumeSubmission />} />
             <Route path="/jobs/:jobId" element={<JobDetail />} />
