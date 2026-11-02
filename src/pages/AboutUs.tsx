@@ -9,9 +9,9 @@ import aboutHero from "@/assets/about-hero.jpg";
 import teamCollaboration from "@/assets/team-collaboration.jpg";
 import missionVision from "@/assets/mission-vision.jpg";
 import prasannaHeadshot from "/lovable-uploads/6e0bce80-e062-44ce-aae6-b11c691642e9.png";
-import srinivasHeadshot from "@/assets/srinivas-reddy-pasula.jpg";
+import srinivasHeadshot from "@/assets/srinivas-reddy-pasula.png";
 import jaicindHeadshot from "@/assets/jaicind-bhavan.png";
-import sreenathHeadshot from "@/assets/sreenath-reddy.webp";
+import sreenathHeadshot from "@/assets/sreenath-reddy.png";
 
 type TeamMember = {
   name: string;
@@ -34,12 +34,14 @@ const AboutUs = () => {
     {
       name: "Jaicind Bhavan",
       role: "CTO",
-      image: jaicindHeadshot
+      image: jaicindHeadshot,
+      linkedin: "https://www.linkedin.com/in/jaicind/"
     },
     {
       name: "Sreenath Reddy",
       role: "AVP - Operations",
-      image: sreenathHeadshot
+      image: sreenathHeadshot,
+      linkedin: "https://www.linkedin.com/in/asreenath/"
     }
   ];
 
@@ -73,7 +75,7 @@ const AboutUs = () => {
             {member.description}
           </p>
         )}
-        {member.linkedin && (
+        {member.linkedin ? (
           <a
             href={member.linkedin}
             target="_blank"
@@ -83,6 +85,12 @@ const AboutUs = () => {
             <Linkedin className="h-5 w-5" />
             <span className="text-sm font-medium">LinkedIn</span>
           </a>
+        ) : (
+          // Shown without a link until the member's LinkedIn URL is added.
+          <span className="inline-flex items-center gap-2 text-primary">
+            <Linkedin className="h-5 w-5" />
+            <span className="text-sm font-medium">LinkedIn</span>
+          </span>
         )}
       </CardContent>
     </Card>
