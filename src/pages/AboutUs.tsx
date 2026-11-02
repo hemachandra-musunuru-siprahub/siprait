@@ -11,7 +11,7 @@ import missionVision from "@/assets/mission-vision.jpg";
 import prasannaHeadshot from "/lovable-uploads/6e0bce80-e062-44ce-aae6-b11c691642e9.png";
 import srinivasHeadshot from "@/assets/srinivas-reddy-pasula.jpg";
 import jaicindHeadshot from "@/assets/jaicind-bhavan.png";
-import sreenathHeadshot from "@/assets/sreenath-reddy.webp";
+import sreenathHeadshot from "@/assets/sreenath-reddy.png";
 
 type TeamMember = {
   name: string;
@@ -34,12 +34,14 @@ const AboutUs = () => {
     {
       name: "Jaicind Bhavan",
       role: "CTO",
-      image: jaicindHeadshot
+      image: jaicindHeadshot,
+      linkedin: "https://www.linkedin.com/in/jaicind/"
     },
     {
       name: "Sreenath Reddy",
       role: "AVP - Operations",
-      image: sreenathHeadshot
+      image: sreenathHeadshot,
+      linkedin: "https://www.linkedin.com/in/asreenath/"
     }
   ];
 
