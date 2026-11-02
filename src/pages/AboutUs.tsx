@@ -75,7 +75,7 @@ const AboutUs = () => {
             {member.description}
           </p>
         )}
-        {member.linkedin && (
+        {member.linkedin ? (
           <a
             href={member.linkedin}
             target="_blank"
@@ -85,6 +85,12 @@ const AboutUs = () => {
             <Linkedin className="h-5 w-5" />
             <span className="text-sm font-medium">LinkedIn</span>
           </a>
+        ) : (
+          // Shown without a link until the member's LinkedIn URL is added.
+          <span className="inline-flex items-center gap-2 text-primary">
+            <Linkedin className="h-5 w-5" />
+            <span className="text-sm font-medium">LinkedIn</span>
+          </span>
         )}
       </CardContent>
     </Card>
