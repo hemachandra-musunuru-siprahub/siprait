@@ -28,7 +28,6 @@ import {
   Compass,
   LineChart,
   Shield,
-  Cloud,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -205,12 +204,6 @@ export default function AppliedAI() {
       title: "Software Development",
       description: "Custom cloud-native web applications, mobile platforms, and enterprise system modernization.",
       link: "/services/software-development",
-    },
-    {
-      icon: Cloud,
-      title: "Cloud & Infrastructure",
-      description: "Scalable cloud architecture, migration, containerization, and 24/7 managed infrastructure.",
-      link: "/services/cloud-infra",
     },
     {
       icon: Shield,
@@ -737,7 +730,7 @@ export default function AppliedAI() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {relatedServices.map((svc, index) => {
                 const IconComponent = svc.icon;
                 return (

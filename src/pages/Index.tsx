@@ -21,7 +21,7 @@ const homeFaqs = [
   {
     question: "What does SipraHub do?",
     answer:
-      "SipraHub helps businesses plan, build, and scale AI-driven digital solutions through software development, AI services and consulting, cloud and infrastructure, cybersecurity, and flexible delivery models.",
+      "SipraHub helps businesses plan, build, and scale AI-driven digital solutions through software development, AI services and consulting, cybersecurity, and flexible delivery models.",
   },
   {
     question: "What types of AI solutions does SipraHub provide?",
@@ -46,7 +46,7 @@ const homeFaqs = [
   {
     question: "Does SipraHub provide non-AI technology services?",
     answer:
-      "Yes. In addition to AI services, SipraHub provides software development, cloud and infrastructure, cybersecurity, and software delivery services.",
+      "Yes. In addition to AI services, SipraHub provides software development, cybersecurity, and software delivery services.",
   },
   {
     question: "Which industries can SipraHub support?",

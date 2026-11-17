@@ -38,7 +38,6 @@ const SERVICE_OPTIONS = [
   { value: "applied-ai", label: "Applied AI Services" },
   { value: "ai-consulting", label: "AI Consulting Services" },
   { value: "cybersecurity", label: "Cybersecurity" },
-  { value: "cloud-infrastructure", label: "Cloud & Infrastructure" },
   { value: "odc-setup", label: "ODC Setup" },
   { value: "maintenance", label: "System Maintenance" },
 ];

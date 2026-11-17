@@ -9,7 +9,6 @@ const Footer = () => {
     { name: "AI Solutions", href: "/services/ai-services" },
     { name: "AI Advisory & Consulting", href: "/services/ai-advisory-consulting" },
     { name: "Cybersecurity", href: "/services/cybersecurity" },
-    { name: "Cloud & Infrastructure", href: "/services/cloud-infra" },
     { name: "Adaptive Delivery Solutions", href: "/services/software-delivery-models" },
   ];
 

@@ -26,7 +26,7 @@ const ServicesOverview = () => {
             What does SipraHub do?
           </h3>
           <p className="text-muted-foreground leading-relaxed text-base sm:text-lg max-w-3xl mx-auto">
-            SipraHub helps businesses transform with AI through strategy, consulting, custom software development, automation, cloud, and cybersecurity services. We help organizations move from identifying opportunities to implementing and scaling practical technology solutions.
+            SipraHub helps businesses transform with AI through strategy, consulting, custom software development, automation, and cybersecurity services. We help organizations move from identifying opportunities to implementing and scaling practical technology solutions.
           </p>
         </div>
 
@@ -34,9 +34,10 @@ const ServicesOverview = () => {
           {homepageServices.map((service, index) => (
             <Card
               key={index}
-              className="bg-gradient-card border border-primary/10 shadow-card hover:shadow-hero hover:border-primary/20 transition-smooth group"
+              // An odd last card spans both columns at half width (minus half the gap) so it sits centred.
+              className={`bg-gradient-card border border-primary/10 shadow-card hover:shadow-hero hover:border-primary/20 transition-smooth group ${index === homepageServices.length - 1 && homepageServices.length % 2 === 1 ? "md:col-span-2 md:w-[calc(50%-1rem)] md:mx-auto" : ""}`}
             >
-              <CardContent className="p-8">
+              <CardContent className="p-8 h-full flex flex-col">
                 <div className="flex items-start space-x-4 mb-6">
                   <div className="p-3 rounded-lg bg-muted group-hover:scale-110 transition-bounce">
                     <service.icon className="h-8 w-8 text-primary" />
@@ -51,7 +52,7 @@ const ServicesOverview = () => {
                   </div>
                 </div>
 
-                <Button variant="outline" size="sm" asChild className="w-fit mt-4">
+                <Button variant="outline" size="sm" asChild className="w-fit mt-auto">
                   <Link to={service.link}>
                     Learn More
                     <ArrowRight className="ml-2 h-4 w-4 text-[#888888] group-hover:text-primary transition-colors duration-300" />

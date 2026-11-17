@@ -1,4 +1,4 @@
-import { Code, Brain, Users, Shield, Cloud, Zap, LucideIcon } from "lucide-react";
+import { Code, Brain, Users, Shield, Zap, LucideIcon } from "lucide-react";
 
 export interface ServiceItem {
   icon: LucideIcon;
@@ -54,17 +54,6 @@ export const services: ServiceItem[] = [
     link: "/services/cybersecurity"
   },
   {
-    icon: Cloud,
-    title: "Cloud & Infrastructure",
-    description: "Comprehensive cloud solutions and infrastructure services for scalable business growth.",
-    features: [
-      "Cloud Setup & Migration",
-      "Infrastructure Management",
-      "Scalable Solutions"
-    ],
-    link: "/services/cloud-infra"
-  },
-  {
     icon: Zap,
     title: "Adaptive Delivery Solutions",
     description: "Flexible delivery models including on-premise, nearshore, and offshore teams tailored to your needs.",
@@ -77,10 +66,9 @@ export const services: ServiceItem[] = [
   }
 ];
 
-/** Homepage shows 4 key services: Software Dev, AI Services & Consulting, Cloud, Cybersecurity */
+/** Homepage shows the 3 technology services, in the same order as the navbar menu */
 export const homepageServices: ServiceItem[] = [
+  services[3], // Cybersecurity
   services[0], // Software Development
-  { ...services[1], title: "AI Services & Consulting" }, // AI Solutions with combined title
-  services[4], // Cloud & Infrastructure
-  services[3]  // Cybersecurity
+  services[4]  // Adaptive Delivery Solutions
 ];

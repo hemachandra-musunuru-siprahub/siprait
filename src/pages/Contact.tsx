@@ -39,7 +39,7 @@ const contactFaqs = [
   {
     question: "What services can I ask about through the contact form?",
     answer:
-      "You can discuss requirements related to AI, software development, cloud and infrastructure, cybersecurity, consulting, and other listed SipraHub services.",
+      "You can discuss requirements related to AI, software development, cybersecurity, consulting, and other listed SipraHub services.",
   },
   {
     question: "Where is SipraHub’s India office?",
