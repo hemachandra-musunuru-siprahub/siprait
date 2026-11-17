@@ -17,7 +17,6 @@ import {
   Code,
   Brain,
   Shield,
-  Cloud,
   Zap,
   LineChart,
   ArrowRight,
@@ -147,25 +146,6 @@ const servicesData: ServiceCardData[] = [
     engagementModels: ["Security Audits", "Managed Security (MSSP)", "Continuous VAPT"],
   },
   {
-    id: "cloud-infra",
-    category: "cloud",
-    categoryLabel: "Cloud & Infrastructure",
-    icon: Cloud,
-    title: "Cloud & Infrastructure",
-    tagline: "Cloud Migration, DevOps Automation & Managed Infrastructure",
-    description:
-      "Build resilient, high-availability cloud foundations. We streamline cloud migrations across AWS, Azure, and Google Cloud, implement Infrastructure-as-Code (IaC), optimize Microsoft 365, and provide 24/7 reliability engineering.",
-    link: "/services/cloud-infra",
-    highlights: [
-      "Multi-Cloud Architecture & Seamless Cloud Migration",
-      "DevOps CI/CD Pipelines & Infrastructure as Code (IaC)",
-      "Microsoft Office 365 Enterprise Setup & Management",
-      "24/7 SRE Monitoring, Cost Optimization & Auto-Scaling",
-    ],
-    techStack: ["AWS", "Microsoft Azure", "Google Cloud", "Kubernetes", "Terraform", "Docker"],
-    engagementModels: ["Cloud Migration Projects", "DevOps Enablement", "Managed Cloud (24/7)"],
-  },
-  {
     id: "delivery-models",
     category: "delivery",
     categoryLabel: "Delivery & Talent Solutions",
@@ -191,7 +171,6 @@ const categoryFilters = [
   { id: "software", label: "Software Engineering" },
   { id: "ai", label: "AI & Intelligence" },
   { id: "security", label: "Cybersecurity" },
-  { id: "cloud", label: "Cloud & Infra" },
   { id: "delivery", label: "Delivery Models" },
 ];
 
@@ -199,7 +178,7 @@ const faqs = [
   {
     question: "What technology services does SipraHub offer?",
     answer:
-      "SipraHub offers software development, AI services and consulting, cloud and infrastructure, cybersecurity, and flexible software delivery solutions.",
+      "SipraHub offers software development, AI services and consulting, cybersecurity, and flexible software delivery solutions.",
   },
   {
     question: "Can SipraHub combine multiple services in one project?",
@@ -273,7 +252,7 @@ const ServicesHub = () => {
     <div className="min-h-screen bg-background text-foreground flex flex-col selection:bg-primary/20 selection:text-primary">
       <SEO
         title="AI-Powered IT Services & Enterprise Solutions | SipraHub"
-        description="Explore SipraHub's full spectrum of enterprise IT & AI services: Custom Software Development, AI Solutions & Consulting, Cybersecurity, Cloud Infrastructure, and Adaptive Delivery Models."
+        description="Explore SipraHub's full spectrum of enterprise IT & AI services: Custom Software Development, AI Solutions & Consulting, Cybersecurity, and Adaptive Delivery Models."
         canonical="https://siprahub.com/services"
       />
       <Helmet>
@@ -330,7 +309,7 @@ const ServicesHub = () => {
               </h1>
 
               <p className="text-lg sm:text-xl text-white/90 max-w-3xl leading-relaxed mb-10 font-normal">
-                Accelerate your digital evolution with SipraHub’s end-to-end technology suite. We unify custom software engineering, production AI systems, next-gen cybersecurity, cloud infrastructure, and flexible global delivery models.
+                Accelerate your digital evolution with SipraHub’s end-to-end technology suite. We unify custom software engineering, production AI systems, next-gen cybersecurity, and flexible global delivery models.
               </p>
 
               <div className="flex flex-wrap items-center gap-4 sm:gap-6">
