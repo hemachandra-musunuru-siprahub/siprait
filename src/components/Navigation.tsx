@@ -44,37 +44,29 @@ const sipraAI: NavSection[] = [{
 }];
 
 const technologyServices: NavLink[] = [{
-  name: "Software Development",
-  href: "/services/software-development"
-}, {
   name: "Cybersecurity",
   href: "/services/cybersecurity"
 }, {
-  name: "Cloud & Infrastructure",
-  href: "/services/cloud-infra"
+  name: "Software Development",
+  href: "/services/software-development"
 }, {
   name: "Adaptive Delivery Solutions",
   href: "/services/software-delivery-models"
 }];
 
 const productsAndPlatforms: NavLink[] = [
-  { name: "AIRIS – AI Recruitment Platform", href: "https://ai.siprahub.com/our-work/airis-ai-recruitment-platform", external: true },
-  { name: "SipraOne – AI Employee Intranet Portal", href: "https://ai.siprahub.com/our-work/sipraone", external: true },
-  { name: "NeuroAssist – 24/7 Clinic Digital Assistant", href: "https://ai.siprahub.com/our-work/digital-assistant-clinic", external: true },
-  { name: "AI Service Desk Co-pilot for Insurance", href: "https://ai.siprahub.com/our-work/ai-service-desk-copilot", external: true },
-  { name: "AI-Powered Learning Management System", href: "https://ai.siprahub.com/our-work/learning-management-system-antigravity", external: true },
-  { name: "Editorial Workflow Operations Platform", href: "https://ai.siprahub.com/our-work/editorial-workflow", external: true },
-  { name: "Enterprise Workforce Delivery & Billing Platform", href: "https://ai.siprahub.com/our-work/enterprise-workforce-delivery-billing-platform", external: true },
-  { name: "PanelQ – AI IT Operations & Decision Intelligence Platform", href: "https://ai.siprahub.com/our-work/paneiq", external: true },
-  { name: "Effecta® – Building a Connected Go-To-Market Foundation", href: "https://ai.siprahub.com/our-work/effecta-gtm-foundation", external: true }
+  { name: "AI Recruitment Platform", href: "https://ai.siprahub.com/our-work/airis-ai-recruitment-platform", external: true },
+  { name: "HR Intranet Portal", href: "https://ai.siprahub.com/our-work/sipraone", external: true },
+  { name: "Clinic AI Assistant", href: "https://ai.siprahub.com/our-work/digital-assistant-clinic", external: true },
+  { name: "AI Service Desk", href: "https://ai.siprahub.com/our-work/ai-service-desk-copilot", external: true },
+  { name: "AI-Powered LMS", href: "https://ai.siprahub.com/our-work/learning-management-system-antigravity", external: true },
+  { name: "Editorial Workflow Ops", href: "https://ai.siprahub.com/our-work/editorial-workflow", external: true },
+  { name: "Workforce Management", href: "https://ai.siprahub.com/our-work/enterprise-workforce-delivery-billing-platform", external: true },
+  { name: "AI IT Ops Intelligence Platform", href: "https://ai.siprahub.com/our-work/paneiq", external: true }
 ];
 
-// Thought Leadership and Newsletters have no pages yet, so they point at the Coming Soon page.
 const knowledgeHub: NavLink[] = [
-  { name: "Blogs & Articles", href: "https://ai.siprahub.com/blog", external: true },
-  { name: "Thought Leadership", href: "/coming-soon" },
-  { name: "Newsletters", href: "/coming-soon" },
-  { name: "Research & Reports", href: "/resources" }
+  { name: "Blogs & Articles", href: "https://ai.siprahub.com/blog", external: true }
 ];
 
 const Navigation = () => {
@@ -91,6 +83,13 @@ const Navigation = () => {
 
   const renderDropdownItems = (items: NavLink[]) => items.map(item => <DropdownMenuItem key={item.name} asChild>
     {item.external ? <a href={item.href} className="w-full">{item.name}</a> : <Link to={item.href} className="w-full">{item.name}</Link>}
+  </DropdownMenuItem>);
+
+  // Indented items shown under a section heading.
+  const renderDropdownSubItems = (items: NavLink[]) => items.map(item => <DropdownMenuItem key={item.name} asChild>
+    <a href={item.href} className="w-full pl-5">
+      {item.name}
+    </a>
   </DropdownMenuItem>);
 
   const renderMobileSubLinks = (items: NavLink[]) => items.map(item => item.external ? <a key={item.name} href={item.href} className={mobileSubLinkClass} onClick={closeMenu}>
@@ -122,7 +121,7 @@ const Navigation = () => {
                 {index > 0 && <DropdownMenuSeparator />}
                 {section.items ? <>
                   <DropdownMenuLabel className="text-primary">{section.title}</DropdownMenuLabel>
-                  {renderDropdownItems(section.items)}
+                  {renderDropdownSubItems(section.items)}
                 </> : <DropdownMenuItem asChild>
                   <a href={section.href} className="w-full font-semibold text-primary">{section.title}</a>
                 </DropdownMenuItem>}
@@ -150,7 +149,7 @@ const Navigation = () => {
 
           <DropdownMenu>
             <DropdownMenuTrigger className={`flex items-center gap-1 ${desktopLinkClass(isKnowledgeHubActive)}`}>
-              Knowledge Hub <ChevronDown className="h-4 w-4" />
+              Resources <ChevronDown className="h-4 w-4" />
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-48">
               {renderDropdownItems(knowledgeHub)}
@@ -201,7 +200,7 @@ const Navigation = () => {
         </div>
 
         <div className="space-y-2">
-          <span className="block text-sm font-medium text-muted-foreground">Knowledge Hub</span>
+          <span className="block text-sm font-medium text-muted-foreground">Resources</span>
           {renderMobileSubLinks(knowledgeHub)}
         </div>
 
