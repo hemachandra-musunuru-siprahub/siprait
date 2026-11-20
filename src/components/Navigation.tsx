@@ -113,9 +113,14 @@ const Navigation = () => {
           </Link>
 
           <DropdownMenu>
-            <DropdownMenuTrigger className={`flex items-center gap-1 ${desktopLinkClass(false)}`}>
-              Sipra AI <ChevronDown className="h-4 w-4" />
-            </DropdownMenuTrigger>
+            <div className="flex items-center gap-1">
+              <a href="https://ai.siprahub.com/" className={desktopLinkClass(false)}>
+                Sipra AI
+              </a>
+              <DropdownMenuTrigger className={desktopLinkClass(false)} aria-label="Open Sipra AI menu">
+                <ChevronDown className="h-4 w-4" />
+              </DropdownMenuTrigger>
+            </div>
             <DropdownMenuContent className="w-72 max-h-[80vh] overflow-y-auto">
               {sipraAI.map((section, index) => <div key={section.title}>
                 {index > 0 && <DropdownMenuSeparator />}
@@ -180,7 +185,7 @@ const Navigation = () => {
         </Link>
 
         <div className="space-y-2">
-          <span className="block text-sm font-medium text-muted-foreground">Sipra AI</span>
+          <a href="https://ai.siprahub.com/" className="block text-sm font-medium text-muted-foreground" onClick={closeMenu}>Sipra AI</a>
           {sipraAI.map(section => section.items ? <div key={section.title} className="space-y-2">
               <span className="block pl-4 text-sm font-semibold text-primary">{section.title}</span>
               <div className="pl-4">{renderMobileSubLinks(section.items)}</div>
